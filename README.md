@@ -1,3 +1,3 @@
 # prosperar-core
 
-Projeto de Machine Learning para o &#34;Prosperar&#34;
+Projeto de Machine Learning para o "Prosperar";
