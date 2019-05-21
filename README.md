@@ -9,8 +9,13 @@ Projeto de Machine Learning para o "Prosperar";
 ./run.sh
 ```
 
-Talvez seja necessária permissão de acesso
+Talvez seja necessï¿½ria permissï¿½o de acesso
 
 ```
 chmod u+x run.sh
 ```
+
+ou clique duplo no script run.sh
+
+### Windows
+Clique duplo no script run.bat. *ainda nao testado*
