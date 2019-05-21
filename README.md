@@ -9,7 +9,7 @@ Projeto de Machine Learning para o "Prosperar";
 ./run.sh
 ```
 
-Talvez seja necess�ria permiss�o de acesso
+Talvez seja necessaria permissao de acesso
 
 ```
 chmod u+x run.sh
