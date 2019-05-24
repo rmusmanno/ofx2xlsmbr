@@ -1,2 +1,3 @@
 #!/bin/sh
-python main.py
+source env/bin/activate
+python3 -m main
