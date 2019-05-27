@@ -15,8 +15,8 @@ class OFXReaderController(IReaderController):
             # TODO: resolver isto por regex
             begin = '<OFX>'
             end = '</OFX>'
-            xml = begin + (content.split(begin)[1].split(end)[0]) + end
-            print(xml)
+            ofx = begin + (content.split(begin)[1].split(end)[0]) + end
+            print(ofx)
 
         '''
         cs = CashFlow(name='cashflow 1',
@@ -26,5 +26,5 @@ class OFXReaderController(IReaderController):
 
         bs.inflows.append(cs)
         '''
-        
+
         return bs
