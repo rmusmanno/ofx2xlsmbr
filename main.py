@@ -1,4 +1,4 @@
-from tests.FactoryTest import csvWriterControllerTest
+from tests.CSVWriterTest import csvWriterControllerTest
 
 # TODO: passar isso para uma unidade de testes. Manter a main enxuta
 def runTests():
