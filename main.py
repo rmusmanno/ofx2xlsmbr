@@ -1,4 +1,4 @@
-from tests.FactoryTest import csvFactoryTest
+from tests.FactoryTest import csvWriterControllerTest
 
 # TODO: passar isso para uma unidade de testes. Manter a main enxuta
 def main():
@@ -6,5 +6,6 @@ def main():
     pass
 
 if __name__ == "__main__":
-    csvFactoryTest()
+    csvWriterControllerTest()
+    #csvFactoryTest()
     #main()
