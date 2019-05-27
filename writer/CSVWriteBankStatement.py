@@ -7,6 +7,6 @@ class CSVWriterBankStatement(IWriterBankStatement):
 
         writerCS.writeHeader(csvOutput)
         for cs in bankStatement.inflows:
-            writerCS.write(cs, csvOutput)
+            writerCS.write(cs, factory, csvOutput)
         for cs in bankStatement.outflows:
-            writerCS.write(cs, csvOutput)
+            writerCS.write(cs, factory, csvOutput)

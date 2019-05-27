@@ -2,7 +2,7 @@ from .IWriterCashFlow import IWriterCashFlow
 from model.CashFlow import CashFlow
 
 class CSVWriterCashFlow(IWriterCashFlow):
-    def write(self, cashFlow: CashFlow, csvOutput = []):        
+    def write(self, cashFlow: CashFlow, factory, csvOutput = []):        
         csvOutput.append([
             str(cashFlow.date),
             cashFlow.name,
