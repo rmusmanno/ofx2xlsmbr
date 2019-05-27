@@ -4,5 +4,5 @@ from model.BankStatement import BankStatement
 
 class IWriterBankStatement(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def write(self, bankStatement: BankStatement):
+    def write(self, bankStatement: BankStatement, csvOutput):
         pass

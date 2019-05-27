@@ -22,10 +22,16 @@ def csvFactoryTest():
 
     # print(str(bs))
 
-    writerBS = factory.createWriterBankStatement()
-    writerBS.write(bs)
-    
-    writerCS = factory.createWriterCashFlow()
-    writerCS.write(inflow[0])
+    outputBS = ['']
 
+    writerBS = factory.createWriterBankStatement()
+    writerBS.write(bs, outputBS)
+
+    print(outputBS[0])
     
+    outputCS = ['']
+
+    writerCS = factory.createWriterCashFlow()
+    writerCS.write(inflow[0], outputCS)
+
+    print(outputCS[0])
