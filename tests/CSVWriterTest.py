@@ -1,5 +1,4 @@
 from factory.CSVWriterFactory import CSVWriterFactory
-from writer.CSVWriterCashFlow import CSVWriterCashFlow
 
 from model.BankStatement import BankStatement
 from model.CashFlow import CashFlow, CashFlowType
