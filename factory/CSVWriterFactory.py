@@ -6,12 +6,12 @@ from writer.CSVWriterCashFlow import CSVWriterCashFlow
 from writer.IWriterBankStatement import IWriterBankStatement
 from writer.CSVWriteBankStatement import CSVWriterBankStatement
 
-from writer.IWriter import IWriter
-from writer.CSVWriter import CSVWriter
+from writer.IWriterController import IWriterController
+from writer.CSVWriterController import CSVWriterController
 
 class CSVWriterFactory(WriterAbstractFactory):
-    def createWriter(self) -> IWriter:
-        return CSVWriter()
+    def createWriterController(self) -> IWriterController:
+        return CSVWriterController()
 
     def createWriterBankStatement(self) -> IWriterBankStatement:
         return CSVWriterBankStatement()

@@ -1,8 +1,8 @@
 import csv
 
-from .IWriter import IWriter
+from .IWriterController import IWriterController
 
-class CSVWriter(IWriter):
+class CSVWriterController(IWriterController):
     def write(self, data, outputFilename):
         # write data to file
         pass
