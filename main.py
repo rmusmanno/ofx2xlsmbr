@@ -1,19 +1,10 @@
-from model.BankStatement import BankStatement
-from model.CashFlow import CashFlow, CashFlowType
-import datetime
+from tests.FactoryTest import csvFactoryTest
 
 # TODO: passar isso para uma unidade de testes. Manter a main enxuta
 def main():
-    outflow = [CashFlow('debit 1', CashFlowType.DEBIT, -100.0, datetime.datetime.now()),
-                CashFlow('debit 2', CashFlowType.DEBIT, -127.0),
-                CashFlow('credit 1', CashFlowType.CREDIT, -42.0)]
-
-    inflow = [CashFlow('credit 1', CashFlowType.CREDIT, 1000.0)]
-
-    bs = BankStatement(inflow, outflow)
-
-    print(str(bs))
-
+    print('main called')
+    pass
 
 if __name__ == "__main__":
-    main()
+    csvFactoryTest()
+    #main()
