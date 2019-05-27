@@ -4,8 +4,6 @@ from model.BankStatement import BankStatement
 from model.CashFlow import CashFlow
 
 from .IWriterController import IWriterController
-from .IWriterCashFlow import IWriterCashFlow
-from .CSVWriterCashFlow import CSVWriterCashFlow
 
 class CSVWriterController(IWriterController):
     def write(self, data: BankStatement, factory, outputFilename):
