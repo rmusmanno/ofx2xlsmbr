@@ -1,7 +1,4 @@
-from factory.WriterAbstractFactory import WriterAbstractFactory
 from factory.CSVWriterFactory import CSVWriterFactory
-
-from writer.IWriterCashFlow import IWriterCashFlow
 from writer.CSVWriterCashFlow import CSVWriterCashFlow
 
 from model.BankStatement import BankStatement
