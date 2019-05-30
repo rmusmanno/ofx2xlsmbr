@@ -4,18 +4,9 @@ Projeto de Machine Learning para o "Prosperar";
 
 ## Como rodar:
 
-### Linux
-```
-./run.sh
-```
-
-Talvez seja necessaria permissao de acesso
+### Usando docker
 
 ```
-chmod u+x run.sh
+docker build --tag=prosperar-core .
+docker run prosperar-core
 ```
-
-ou clique duplo no script run.sh
-
-### Windows
-Clique duplo no script run.bat. *ainda nao testado*
