@@ -2,7 +2,7 @@ from factory.OFXReaderFactory import OFXReaderFactory
 from factory.CSVWriterFactory import CSVWriterFactory
 
 class AppController():
-    inputFilename = './files/extrato_teste.ofx'
+    inputFilename = './files/input.ofx'
 
     def run(self):
         #ler o caminho do arquivo e verificar se ele existe
