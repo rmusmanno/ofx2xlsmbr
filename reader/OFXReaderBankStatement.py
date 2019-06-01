@@ -2,12 +2,19 @@ from .IReaderBankStatement import IReaderBankStatement
 from model.BankStatement import BankStatement
 
 class OFXReaderBankStatement(IReaderBankStatement):
-    def read(self, factory, tree) -> BankStatement:
+    def read(self, factory, ofx) -> BankStatement:
         bs = BankStatement()
+        stmts = ofx.statements
         
-        csReader = factory.createReaderCashFlow()
-        # TODO: ler bs de da ofxTree
+        # btmts -> bs
+        txs = stmts[0].transactions
 
-        cs = csReader.read(factory, tree)
+        csReader = factory.createReaderCashFlow()
+        for tx in txs:
+            cs = csReader.read(factory, tx)
+            if (cs.value >= 0.0):
+                bs.inflows.append(cs)
+            else:
+                bs.outflows.append(cs)
 
         return bs

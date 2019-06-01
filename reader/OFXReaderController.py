@@ -11,8 +11,9 @@ class OFXReaderController(IReaderController):
     def read(self, factory, inputFilename) -> BankStatement:
         tree = OFXTree()
         tree.parse(inputFilename)
+        convertedTree = tree.convert()
 
         bsReader = factory.createReaderBankStatement()
-        bs = bsReader.read(factory, tree)
+        bs = bsReader.read(factory, convertedTree)
 
         return bs
