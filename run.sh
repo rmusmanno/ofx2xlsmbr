@@ -1,0 +1,1 @@
+docker run -v /home/rafael/Desktop/FINXI/Prosperar/files:/app/files -it prosperar-core

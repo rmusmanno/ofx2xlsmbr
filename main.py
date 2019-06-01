@@ -1,16 +1,20 @@
 from tests.CSVWriterTest import csvWriterControllerTest
 from tests.OFXReaderTest import ofxReaderTest
 
+from controller.AppController import AppController
+
 # TODO: passar isso para uma unidade de testes. Manter a main enxuta
 def runTests():
     print('running tests')
-    ofxReaderTest()
+    #ofxReaderTest()
     #csvWriterControllerTest()
     #csvFactoryTest()
 
 def main():
-    print('main called')
-    runTests()
+    #runTests()
+    app = AppController()
+    app.run()
+
 
 if __name__ == "__main__":
     main()
