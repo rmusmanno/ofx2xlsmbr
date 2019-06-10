@@ -1,13 +1,12 @@
 from .WriterAbstractFactory import WriterAbstractFactory
 
 from writer.IWriterCashFlow import IWriterCashFlow
-from writer.CSVWriterCashFlow import CSVWriterCashFlow
-
 from writer.IWriterBankStatement import IWriterBankStatement
-from writer.CSVWriteBankStatement import CSVWriterBankStatement
-
 from writer.IWriterController import IWriterController
-from writer.CSVWriterController import CSVWriterController
+
+from writer.csv.CSVWriterCashFlow import CSVWriterCashFlow
+from writer.csv.CSVWriteBankStatement import CSVWriterBankStatement
+from writer.csv.CSVWriterController import CSVWriterController
 
 class CSVWriterFactory(WriterAbstractFactory):
     def createWriterController(self) -> IWriterController:

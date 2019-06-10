@@ -1,4 +1,4 @@
-from .IWriterBankStatement import IWriterBankStatement
+from writer.IWriterBankStatement import IWriterBankStatement
 from model.BankStatement import BankStatement
 
 class CSVWriterBankStatement(IWriterBankStatement):

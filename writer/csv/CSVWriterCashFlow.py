@@ -1,4 +1,4 @@
-from .IWriterCashFlow import IWriterCashFlow
+from writer.IWriterCashFlow import IWriterCashFlow
 from model.CashFlow import CashFlow
 
 class CSVWriterCashFlow(IWriterCashFlow):

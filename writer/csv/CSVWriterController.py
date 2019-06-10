@@ -3,7 +3,7 @@ import csv
 from model.BankStatement import BankStatement
 from model.CashFlow import CashFlow
 
-from .IWriterController import IWriterController
+from writer.IWriterController import IWriterController
 
 class CSVWriterController(IWriterController):
     def write(self, data: BankStatement, factory, outputFilename):
