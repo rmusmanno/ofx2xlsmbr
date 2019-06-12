@@ -21,6 +21,4 @@ class XLSMWriterController(IWriterController):
         writerBS = factory.createWriterBankStatement()
         writerBS.write(data, factory, [ws, dv])
 
-        #dv.add(ws['A1'])
-
         wb.save(filename = outputFilename + '.xlsm')
