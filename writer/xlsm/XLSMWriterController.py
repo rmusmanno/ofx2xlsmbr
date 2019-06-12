@@ -12,7 +12,7 @@ class XLSMWriterController(IWriterController):
         wb = Workbook()
         ws = wb.active
 
-        formula = '"1,2,3,4,5,6,7"'
+        formula = '"Profissão,Habitação,Transporte,Dependentes,Saúde,Bem-estar,Outros"'
 
         # create data validation
         dv = DataValidation(type="list", formula1=formula, allow_blank=True)
