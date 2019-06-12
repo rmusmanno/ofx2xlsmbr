@@ -1,5 +1,7 @@
 from factory.OFXReaderFactory import OFXReaderFactory
+
 from factory.CSVWriterFactory import CSVWriterFactory
+from factory.XLSMWriterFactory import XLSMWriterFactory
 
 class AppController():
     inputFilename = './files/input.ofx'
@@ -20,6 +22,7 @@ class AppController():
         #chamar o escritor csv
         outputFilename = './files/output'
         print('Writing to file: ' + outputFilename)
-        factoryCSV = CSVWriterFactory()
-        writerController = factoryCSV.createWriterController()
-        writerController.write(bs, factoryCSV, outputFilename)
+        #factory = CSVWriterFactory()
+        factory = XLSMWriterFactory()
+        writerController = factory.createWriterController()
+        writerController.write(bs, factory, outputFilename)

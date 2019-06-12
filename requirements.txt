@@ -1,2 +1,4 @@
+et-xmlfile==1.0.1
+jdcal==1.4.1
 ofxtools==0.8.20
-pep8==1.7.1
+openpyxl==2.6.2
