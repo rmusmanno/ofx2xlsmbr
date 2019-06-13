@@ -3,6 +3,8 @@ from tests.OFXReaderTest import ofxReaderTest
 
 from controller.AppController import AppController
 
+import logging, sys
+
 # TODO: passar isso para uma unidade de testes. Manter a main enxuta
 def runTests():
     print('running tests')
@@ -11,6 +13,8 @@ def runTests():
     #csvFactoryTest()
 
 def main():
+    logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+
     #runTests()
     app = AppController()
     app.run()
