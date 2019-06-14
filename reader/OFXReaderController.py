@@ -3,6 +3,8 @@ from .IReaderController import IReaderController
 from model.BankStatement import BankStatement
 from model.CashFlow import CashFlow, CashFlowType
 
+from factory.XMLReaderFactory import XMLReaderFactory
+
 import datetime
 from pytz import timezone
 import pytz
@@ -12,18 +14,29 @@ from ofxtools import OFXTree
 
 class OFXReaderController(IReaderController):
     def read(self, factory, inputFilename) -> BankStatement:
-        tree = OFXTree()
-        tree.parse(inputFilename)
+        try:
+            tree = OFXTree()
+            tree.parse(inputFilename)
 
-        # erros de compatibilidade
-        self.treatBradescoException(tree)
-        
-        convertedTree = tree.convert()
+            # erros de compatibilidade
+            self.treatBradescoException(tree)
+            
+            convertedTree = tree.convert()
 
-        bsReader = factory.createReaderBankStatement()
-        bs = bsReader.read(factory, convertedTree)
+            bsReader = factory.createReaderBankStatement()
+            bs = bsReader.read(factory, convertedTree)
 
-        return bs
+            return bs
+        except IndexError:
+            # ofx nao consegue ler versao 220. Ler como XML
+            xmlFactory = XMLReaderFactory()
+            xmlReader = xmlFactory.createReaderController()
+            return xmlReader.read(xmlFactory, inputFilename)
+
+    # Estas duas proximas funcoes trazem desequilibrio ao Universo
+    def treatBancoDoBrasilException(self, inputFilename):
+        # ler ofx do banco do brasil como XML, ignorando o header dele.
+        pass
 
     def treatBradescoException(self, tree):
         root = tree.getroot()
