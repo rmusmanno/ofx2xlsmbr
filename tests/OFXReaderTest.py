@@ -1,8 +1,12 @@
 from factory.OFXReaderFactory import OFXReaderFactory
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 def ofxReaderTest():
     factory = OFXReaderFactory()
     controller = factory.createReaderController()
 
     bs = controller.read(factory, './ofx/extrato_teste.ofx')
-    print(str(bs))
+    logger.info(str(bs))

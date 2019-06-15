@@ -9,6 +9,10 @@ import datetime
 from pytz import timezone
 import pytz
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 import ofxtools
 from ofxtools import OFXTree
 
@@ -48,4 +52,4 @@ class OFXReaderController(IReaderController):
         except ValueError:
             pass
             # se dtServer for um datetime, ele da erro na conversao para int
-            # print('Correcting DTServer')
+            # logger.info('Correcting DTServer')

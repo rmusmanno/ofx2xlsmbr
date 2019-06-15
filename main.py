@@ -5,9 +5,11 @@ from controller.AppController import AppController
 
 import logging, sys
 
+logger = logging.getLogger(__name__)
+
 # TODO: passar isso para uma unidade de testes. Manter a main enxuta
 def runTests():
-    print('running tests')
+    logger.info('running tests')
     #ofxReaderTest()
     #csvWriterControllerTest()
     #csvFactoryTest()

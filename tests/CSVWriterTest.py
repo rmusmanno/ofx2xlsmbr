@@ -4,6 +4,9 @@ from model.BankStatement import BankStatement
 from model.CashFlow import CashFlow, CashFlowType
 
 import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 def csvWriterControllerTest():
     factory = CSVWriterFactory()
@@ -30,18 +33,18 @@ def csvFactoryTest():
 
     bs = BankStatement(inflow, outflow)
 
-    # print(str(bs))
+    # logger.info(str(bs))
 
     outputBS = ['']
 
     writerBS = factory.createWriterBankStatement()
     writerBS.write(bs, outputBS)
 
-    print(outputBS[0])
+    logger.info(outputBS[0])
     
     outputCS = ['']
 
     writerCS = factory.createWriterCashFlow()
     writerCS.write(inflow[0], outputCS)
 
-    print(outputCS[0])
+    logger.info(outputCS[0])
