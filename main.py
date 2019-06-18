@@ -1,5 +1,5 @@
 from tests.CSVWriterTest import csvWriterControllerTest
-from tests.OFXReaderTest import ofxReaderTest
+from tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile
 
 from controller.AppController import AppController
 
@@ -11,11 +11,12 @@ logger = logging.getLogger(__name__)
 def runTests():
     logger.info('running tests')
     #ofxReaderTest()
+    #ofxReaderTestFile()
     #csvWriterControllerTest()
     #csvFactoryTest()
 
 def main():
-    # logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+    #logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
 
     #runTests()
     app = AppController()

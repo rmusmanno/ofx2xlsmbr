@@ -17,10 +17,13 @@ import ofxtools
 from ofxtools import OFXTree
 
 class OFXReaderController(IReaderController):
-    def read(self, factory, inputFilename) -> BankStatement:
+    def read(self, factory, inputFilename='', file=None) -> BankStatement:
         try:
             tree = OFXTree()
-            tree.parse(inputFilename)
+            if (file is not None):
+                tree.parse(file)
+            else:
+                tree.parse(inputFilename)
 
             # erros de compatibilidade
             self.treatBradescoException(tree)
@@ -37,11 +40,7 @@ class OFXReaderController(IReaderController):
             xmlReader = xmlFactory.createReaderController()
             return xmlReader.read(xmlFactory, inputFilename)
 
-    # Estas duas proximas funcoes trazem desequilibrio ao Universo
-    def treatBancoDoBrasilException(self, inputFilename):
-        # ler ofx do banco do brasil como XML, ignorando o header dele.
-        pass
-
+    # Este tratamento de erro tem que ser melhor descrito
     def treatBradescoException(self, tree):
         root = tree.getroot()
         dtServer = root.findall("SIGNONMSGSRSV1")[0].findall("SONRS")[0].findall("DTSERVER")[0]

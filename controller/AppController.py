@@ -14,14 +14,14 @@ class AppController():
         #ler o caminho do arquivo e verificar se ele existe
         inputFilename = self.inputFilename
         if (inputFilename is None or inputFilename == ''):
-            logger.info('No file specified. Use parameter -e INPUT=<filename>')
+            logger.info('No file specified.')
             return
 
         #chamar o leitor ofx
         logger.info('Reading file: ' + inputFilename)
         factoryOFX = OFXReaderFactory()
         readerController = factoryOFX.createReaderController()
-        bs = readerController.read(factoryOFX, inputFilename)
+        bs = readerController.read(factoryOFX, inputFilename=inputFilename)
 
         #chamar o escritor csv
         outputFilename = './files/output'
