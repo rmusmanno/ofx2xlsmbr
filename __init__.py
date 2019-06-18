@@ -1,1 +1,1 @@
-from prosperar-core.controller.ProsperarCore import ProsperarCore
+from prosperarcore.controller.ProsperarCore import ProsperarCore
