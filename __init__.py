@@ -1,1 +1,1 @@
-from ofx2xlsmbr.controller.ProsperarCore import ProsperarCore
+from ofx2xlsmbr.ProsperarCore import ProsperarCore

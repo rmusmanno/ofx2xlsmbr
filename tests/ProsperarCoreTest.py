@@ -1,4 +1,4 @@
-from controller.ProsperarCore import ProsperarCore
+from ProsperarCore import ProsperarCore
 
 import logging
 
