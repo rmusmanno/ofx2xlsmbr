@@ -17,7 +17,7 @@ class ProsperarCore():
         #chamar o leitor ofx
         factoryOFX = OFXReaderFactory()
         readerController = factoryOFX.createReaderController()
-        bs = readerController.read(factoryOFX, inputFilename)
+        bs = readerController.read(factoryOFX, file=file)
 
         #chamar o escritor csv
         outputFilename = './files/output'
