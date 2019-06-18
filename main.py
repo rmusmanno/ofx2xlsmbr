@@ -1,5 +1,6 @@
 from tests.CSVWriterTest import csvWriterControllerTest
 from tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile
+from tests.XMLReaderTest import xmlReaderTestFile
 
 from controller.AppController import AppController
 
@@ -12,6 +13,7 @@ def runTests():
     logger.info('running tests')
     #ofxReaderTest()
     #ofxReaderTestFile()
+    #xmlReaderTestFile()
     #csvWriterControllerTest()
     #csvFactoryTest()
 
