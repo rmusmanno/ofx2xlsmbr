@@ -19,10 +19,7 @@ class ProsperarCore():
         readerController = factoryOFX.createReaderController()
         bs = readerController.read(factoryOFX, file=file)
 
-        #chamar o escritor csv
-        outputFilename = './files/output'
-        logger.info('Writing to file: ' + outputFilename)
-        #factory = CSVWriterFactory()
+        #chamar o escritor xlsm
         factory = XLSMWriterFactory()
         writerController = factory.createWriterController()
-        writerController.write(bs, factory, outputFilename)
+        return writerController.write(bs, factory)

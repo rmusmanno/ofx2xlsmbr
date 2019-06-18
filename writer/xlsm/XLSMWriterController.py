@@ -1,13 +1,16 @@
 from openpyxl import Workbook
 from openpyxl.worksheet.datavalidation import DataValidation
 
+from io import BytesIO
+from tempfile import NamedTemporaryFile
+
 from model.BankStatement import BankStatement
 from model.CashFlow import CashFlow
 
 from writer.IWriterController import IWriterController
 
 class XLSMWriterController(IWriterController):
-    def write(self, data: BankStatement, factory, outputFilename):
+    def write(self, data: BankStatement, factory, outputFilename=''):
         # create worksheet
         wb = Workbook()
         ws = wb.active
@@ -21,4 +24,10 @@ class XLSMWriterController(IWriterController):
         writerBS = factory.createWriterBankStatement()
         writerBS.write(data, factory, [ws, dv])
 
-        wb.save(filename = outputFilename + '.xlsm')
+        if (outputFilename == ''):
+            with NamedTemporaryFile() as tmp:
+                wb.save(tmp.name)
+                output = BytesIO(tmp.read())
+                return output
+        else:
+            wb.save(filename = outputFilename + '.xlsm')
