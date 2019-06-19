@@ -1,7 +1,7 @@
 import abc
 
-from reader.IReaderBankStatement import IReaderBankStatement
-from reader.IReaderCashFlow import IReaderCashFlow
+from ofx2xlsmbr.reader.IReaderBankStatement import IReaderBankStatement
+from ofx2xlsmbr.reader.IReaderCashFlow import IReaderCashFlow
 
 class ReaderAbstractFactory(metaclass=abc.ABCMeta):
     @abc.abstractmethod

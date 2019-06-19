@@ -1,5 +1,5 @@
 from .IReaderBankStatement import IReaderBankStatement
-from model.BankStatement import BankStatement
+from ofx2xlsmbr.model.BankStatement import BankStatement
 
 class OFXReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx) -> BankStatement:

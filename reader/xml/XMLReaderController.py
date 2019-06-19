@@ -1,6 +1,6 @@
-from reader.IReaderController import IReaderController
+from ofx2xlsmbr.reader.IReaderController import IReaderController
 
-from model.BankStatement import BankStatement
+from ofx2xlsmbr.model.BankStatement import BankStatement
 
 import xml.etree.ElementTree as ET
 from lxml import etree

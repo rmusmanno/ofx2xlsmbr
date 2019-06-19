@@ -1,5 +1,5 @@
-from factory.OFXReaderFactory import OFXReaderFactory
-from factory.XLSMWriterFactory import XLSMWriterFactory
+from .factory.OFXReaderFactory import OFXReaderFactory
+from .factory.XLSMWriterFactory import XLSMWriterFactory
 
 import logging
 

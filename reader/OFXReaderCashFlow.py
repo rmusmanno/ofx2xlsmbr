@@ -1,5 +1,5 @@
 from .IReaderCashFlow import IReaderCashFlow
-from model.CashFlow import CashFlow, CashFlowType
+from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
 
 class OFXReaderCashFlow(IReaderCashFlow):
     def read(self, factory, ofx) -> CashFlow:

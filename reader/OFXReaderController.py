@@ -1,9 +1,9 @@
 from .IReaderController import IReaderController
 
-from model.BankStatement import BankStatement
-from model.CashFlow import CashFlow, CashFlowType
+from ofx2xlsmbr.model.BankStatement import BankStatement
+from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
 
-from factory.XMLReaderFactory import XMLReaderFactory
+from ofx2xlsmbr.factory.XMLReaderFactory import XMLReaderFactory
 
 import datetime
 from pytz import timezone

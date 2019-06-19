@@ -1,5 +1,5 @@
-from reader.IReaderBankStatement import IReaderBankStatement
-from model.BankStatement import BankStatement
+from ofx2xlsmbr.reader.IReaderBankStatement import IReaderBankStatement
+from ofx2xlsmbr.model.BankStatement import BankStatement
 
 import xml.etree.ElementTree as ET
 

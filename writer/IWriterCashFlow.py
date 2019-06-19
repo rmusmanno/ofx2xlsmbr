@@ -1,6 +1,6 @@
 import abc
 
-from model.CashFlow import CashFlow
+from ofx2xlsmbr.model.CashFlow import CashFlow
 
 class IWriterCashFlow(metaclass=abc.ABCMeta):
     @abc.abstractmethod

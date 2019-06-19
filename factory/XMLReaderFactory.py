@@ -1,12 +1,12 @@
 from .ReaderAbstractFactory import ReaderAbstractFactory
 
-from reader.IReaderCashFlow import IReaderCashFlow
-from reader.IReaderBankStatement import IReaderBankStatement
-from reader.IReaderController import IReaderController
+from ofx2xlsmbr.reader.IReaderCashFlow import IReaderCashFlow
+from ofx2xlsmbr.reader.IReaderBankStatement import IReaderBankStatement
+from ofx2xlsmbr.reader.IReaderController import IReaderController
 
-from reader.xml.XMLReaderCashFlow import XMLReaderCashFlow
-from reader.xml.XMLReaderBankStatement import XMLReaderBankStatement
-from reader.xml.XMLReaderController import XMLReaderController
+from ofx2xlsmbr.reader.xml.XMLReaderCashFlow import XMLReaderCashFlow
+from ofx2xlsmbr.reader.xml.XMLReaderBankStatement import XMLReaderBankStatement
+from ofx2xlsmbr.reader.xml.XMLReaderController import XMLReaderController
 
 class XMLReaderFactory(ReaderAbstractFactory):
     def createReaderController(self) -> IReaderController:

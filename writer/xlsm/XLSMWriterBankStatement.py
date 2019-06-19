@@ -1,5 +1,5 @@
-from writer.IWriterBankStatement import IWriterBankStatement
-from model.BankStatement import BankStatement
+from ofx2xlsmbr.writer.IWriterBankStatement import IWriterBankStatement
+from ofx2xlsmbr.model.BankStatement import BankStatement
 
 class XLSMWriterBankStatement(IWriterBankStatement):
     def write(self, bankStatement: BankStatement, factory, xlsmOutput):

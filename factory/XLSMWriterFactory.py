@@ -1,12 +1,12 @@
 from .WriterAbstractFactory import WriterAbstractFactory
 
-from writer.IWriterCashFlow import IWriterCashFlow
-from writer.IWriterBankStatement import IWriterBankStatement
-from writer.IWriterController import IWriterController
+from ofx2xlsmbr.writer.IWriterCashFlow import IWriterCashFlow
+from ofx2xlsmbr.writer.IWriterBankStatement import IWriterBankStatement
+from ofx2xlsmbr.writer.IWriterController import IWriterController
 
-from writer.xlsm.XLSMWriterCashFlow import XLSMWriterCashFlow
-from writer.xlsm.XLSMWriterBankStatement import XLSMWriterBankStatement
-from writer.xlsm.XLSMWriterController import XLSMWriterController
+from ofx2xlsmbr.writer.xlsm.XLSMWriterCashFlow import XLSMWriterCashFlow
+from ofx2xlsmbr.writer.xlsm.XLSMWriterBankStatement import XLSMWriterBankStatement
+from ofx2xlsmbr.writer.xlsm.XLSMWriterController import XLSMWriterController
 
 class XLSMWriterFactory(WriterAbstractFactory):
     def createWriterController(self) -> IWriterController:

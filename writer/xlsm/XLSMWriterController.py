@@ -4,10 +4,10 @@ from openpyxl.worksheet.datavalidation import DataValidation
 from io import BytesIO
 from tempfile import NamedTemporaryFile
 
-from model.BankStatement import BankStatement
-from model.CashFlow import CashFlow
+from ofx2xlsmbr.model.BankStatement import BankStatement
+from ofx2xlsmbr.model.CashFlow import CashFlow
 
-from writer.IWriterController import IWriterController
+from ofx2xlsmbr.writer.IWriterController import IWriterController
 
 class XLSMWriterController(IWriterController):
     def write(self, data: BankStatement, factory, outputFilename=''):

@@ -1,5 +1,5 @@
-from reader.IReaderCashFlow import IReaderCashFlow
-from model.CashFlow import CashFlow, CashFlowType
+from ofx2xlsmbr.reader.IReaderCashFlow import IReaderCashFlow
+from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
 
 from datetime import datetime
 

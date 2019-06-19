@@ -1,6 +1,6 @@
 import abc
 
-from model.BankStatement import BankStatement
+from ofx2xlsmbr.model.BankStatement import BankStatement
 
 class IReaderController(metaclass=abc.ABCMeta):
     @abc.abstractmethod

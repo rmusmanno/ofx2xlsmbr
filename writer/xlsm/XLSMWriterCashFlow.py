@@ -1,5 +1,5 @@
-from writer.IWriterCashFlow import IWriterCashFlow
-from model.CashFlow import CashFlow
+from ofx2xlsmbr.writer.IWriterCashFlow import IWriterCashFlow
+from ofx2xlsmbr.model.CashFlow import CashFlow
 
 class XLSMWriterCashFlow(IWriterCashFlow):
     def write(self, cashFlow: CashFlow, factory, xlsmOutput):

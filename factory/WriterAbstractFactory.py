@@ -1,7 +1,7 @@
 import abc
 
-from writer.IWriterBankStatement import IWriterBankStatement
-from writer.IWriterCashFlow import IWriterCashFlow
+from ofx2xlsmbr.writer.IWriterBankStatement import IWriterBankStatement
+from ofx2xlsmbr.writer.IWriterCashFlow import IWriterCashFlow
 
 class WriterAbstractFactory(metaclass=abc.ABCMeta):
     @abc.abstractmethod
