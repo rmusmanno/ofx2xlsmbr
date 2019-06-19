@@ -1,6 +1,4 @@
 from factory.OFXReaderFactory import OFXReaderFactory
-
-from factory.CSVWriterFactory import CSVWriterFactory
 from factory.XLSMWriterFactory import XLSMWriterFactory
 
 import logging
