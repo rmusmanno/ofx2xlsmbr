@@ -8,7 +8,7 @@ setup(
     'ofx2xlsmbr.reader.xml',
     'ofx2xlsmbr.writer',
     'ofx2xlsmbr.writer.xlsm'],   # Chose the same as "name"
-  version = '0.5',      # Start with a small number and increase it with every change you make
+  version = '0.6',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Convert ofx to xlsm',   # Give a short description about your library
   author = 'Rafael Musmanno',                   # Type in your name
@@ -19,7 +19,6 @@ setup(
   install_requires=[            # I get to this in a second
         'et-xmlfile',
         'jdcal',
-        'ofxtools',
         'openpyxl',
         'pytz',
         'lxml',

@@ -13,11 +13,16 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-import ofxtools
-from ofxtools import OFXTree
+#import ofxtools
+#from ofxtools import OFXTree
 
 class OFXReaderController(IReaderController):
     def read(self, factory, inputFilename='', file=None) -> BankStatement:
+        xmlFactory = XMLReaderFactory()
+        xmlReader = xmlFactory.createReaderController()
+        return xmlReader.read(xmlFactory, inputFilename)
+        
+        '''
         try:
             tree = OFXTree()
             if (file is not None):
@@ -39,6 +44,7 @@ class OFXReaderController(IReaderController):
             xmlFactory = XMLReaderFactory()
             xmlReader = xmlFactory.createReaderController()
             return xmlReader.read(xmlFactory, inputFilename)
+        '''
 
     # Este tratamento de erro tem que ser melhor descrito
     def treatBradescoException(self, tree):

@@ -1,6 +1,6 @@
 lxml==4.3.4
 et-xmlfile==1.0.1
 jdcal==1.4.1
-ofxtools==0.8.20
+#ofxtools==0.8.20
 openpyxl==2.6.2
 pytz==2019.1
