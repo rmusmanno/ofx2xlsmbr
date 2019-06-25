@@ -14,7 +14,7 @@ setup(
   author = 'Rafael Musmanno',                   # Type in your name
   author_email = 'rafa.musmanno@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/rmusmanno/ofx2xlsmbr/',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/rmusmanno/ofx2xlsmbr/archive/v0.6.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/rmusmanno/ofx2xlsmbr/archive/v0.7.tar.gz',    # I explain this later on
   keywords = ['ofx', 'xlsm'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
         'et-xmlfile',
