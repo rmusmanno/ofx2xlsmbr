@@ -20,7 +20,7 @@ class OFXReaderController(IReaderController):
     def read(self, factory, inputFilename='', file=None) -> BankStatement:
         xmlFactory = XMLReaderFactory()
         xmlReader = xmlFactory.createReaderController()
-        return xmlReader.read(xmlFactory, inputFilename)
+        return xmlReader.read(xmlFactory, inputFilename, file=file)
         
         '''
         try:
