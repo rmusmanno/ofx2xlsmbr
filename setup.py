@@ -8,7 +8,7 @@ setup(
     'ofx2xlsmbr.reader.xml',
     'ofx2xlsmbr.writer',
     'ofx2xlsmbr.writer.xlsm'],   # Chose the same as "name"
-  version = '0.7',      # Start with a small number and increase it with every change you make
+  version = '0.71',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Convert ofx to xlsm',   # Give a short description about your library
   author = 'Rafael Musmanno',                   # Type in your name
