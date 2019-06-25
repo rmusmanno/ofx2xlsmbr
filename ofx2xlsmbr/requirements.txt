@@ -2,6 +2,6 @@ lxml==4.3.4
 et-xmlfile==1.0.1
 jdcal==1.4.1
 #ofxtools==0.8.20
--e git+ssh://git@github.com/rmusmanno/ofxtools@0.0.1#egg=ofxtools==0.0.1
+ofxtoolslambda==0.0.2
 openpyxl==2.6.2
 pytz==2019.1
