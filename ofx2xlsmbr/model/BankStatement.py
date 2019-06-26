@@ -18,3 +18,7 @@ class BankStatement:
         for cs in self.outflows:
             bs += '\n' + str(cs)
         return bs
+
+    def merge(self, other: BankStatement):
+        self.inflows.append(other.inflows)
+        self.outflows.append(other.outflows)

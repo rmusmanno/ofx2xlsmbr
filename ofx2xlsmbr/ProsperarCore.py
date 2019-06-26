@@ -6,18 +6,18 @@ import logging
 logger = logging.getLogger(__name__)
 
 class ProsperarCore():
-    def run(self, file):
+    def run(self, files):
         #ler o caminho do arquivo e verificar se ele existe
-        if (file is None):
-            logger.info('No file specified.')
+        if (files is None):
+            logger.info('No files specified.')
             return
 
         #chamar o leitor ofx
         factoryOFX = OFXReaderFactory()
         readerController = factoryOFX.createReaderController()
-        bs = readerController.read(factoryOFX, file=file)
+        bankStmts = readerController.read(factoryOFX, files=[files])
 
         #chamar o escritor xlsm
         factory = XLSMWriterFactory()
         writerController = factory.createWriterController()
-        return writerController.write(bs, factory)
+        return writerController.write(bankStmts, factory)

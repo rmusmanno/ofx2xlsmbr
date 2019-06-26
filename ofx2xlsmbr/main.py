@@ -1,9 +1,9 @@
-from tests.CSVWriterTest import csvWriterControllerTest
+#from tests.CSVWriterTest import csvWriterControllerTest
 from tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile
-from tests.XMLReaderTest import xmlReaderTestFile
-from tests.ProsperarCoreTest import prosperarCoreTest
+#from tests.XMLReaderTest import xmlReaderTestFile
+#from tests.ProsperarCoreTest import prosperarCoreTest
 
-from controller.AppController import AppController
+#from controller.AppController import AppController
 
 import logging, sys
 

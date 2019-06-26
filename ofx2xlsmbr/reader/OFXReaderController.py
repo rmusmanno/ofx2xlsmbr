@@ -5,6 +5,7 @@ from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
 
 from ofx2xlsmbr.factory.XMLReaderFactory import XMLReaderFactory
 
+from typing import List
 import datetime
 from pytz import timezone
 import pytz
@@ -17,28 +18,30 @@ import ofxtools
 from ofxtools import OFXTree
 
 class OFXReaderController(IReaderController):
-    def read(self, factory, inputFilename='', file=None) -> BankStatement:
-        try:
-            tree = OFXTree()
-            if (file is not None):
-                tree.parse(file)
-            else:
-                tree.parse(inputFilename)
+    def read(self, factory, files=[]) -> List[BankStatement]:
+        print(files)
 
-            # erros de compatibilidade
-            self.treatBradescoException(tree)
-            
-            convertedTree = tree.convert()
+        bankStmts = []
+        bsReader = factory.createReaderBankStatement()
 
-            bsReader = factory.createReaderBankStatement()
-            bs = bsReader.read(factory, convertedTree)
+        if (files):
+            for file in files:
+                try:
+                    tree = OFXTree()
+                    tree.parse(file)
+                    self.treatBradescoException(tree)
+                    convertedTree = tree.convert()
+                    bs = bsReader.read(factory, convertedTree)
+                    bankStmts.append(bs)
+                except IndexError:
+                    # ofx nao consegue ler versao 220. Ler como XML
+                    xmlFactory = XMLReaderFactory()
+                    xmlReader = xmlFactory.createReaderController()
+                    bs = xmlReader.read(xmlFactory, inputFilename, file=file)
+                    bankStmts.append(bs)
+            return bankStmts
 
-            return bs
-        except IndexError:
-            # ofx nao consegue ler versao 220. Ler como XML
-            xmlFactory = XMLReaderFactory()
-            xmlReader = xmlFactory.createReaderController()
-            return xmlReader.read(xmlFactory, inputFilename, file=file)
+        return [BankStatement()]
 
     # Este tratamento de erro tem que ser melhor descrito
     def treatBradescoException(self, tree):
