@@ -35,9 +35,10 @@ class OFXReaderController(IReaderController):
                     bankStmts.append(bs)
                 except IndexError:
                     # ofx nao consegue ler versao 220. Ler como XML
+                    file.seek(0)
                     xmlFactory = XMLReaderFactory()
                     xmlReader = xmlFactory.createReaderController()
-                    bs = xmlReader.read(xmlFactory, inputFilename, file=file)
+                    bs = xmlReader.read(xmlFactory, files=[file])
                     bankStmts.append(bs)
             return bankStmts
 

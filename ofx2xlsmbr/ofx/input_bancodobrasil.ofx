@@ -1,0 +1,96 @@
+OFXHEADER:100DATA:OFXSGMLVERSION:102SECURITY:NONEENCODING:USASCIICHARSET:1252COMPRESSION:NONEOLDFILEUID:NONENEWFILEUID:NONE<OFX>
+   <SIGNONMSGSRSV1>
+      <SONRS>
+         <STATUS>
+            <CODE>0</CODE>
+            <SEVERITY>INFO</SEVERITY>
+         </STATUS>
+         <DTSERVER>20190613120000[-3:BRT]</DTSERVER>
+         <LANGUAGE>POR</LANGUAGE>
+         <FI>
+            <ORG>Banco do Brasil</ORG>
+            <FID>1</FID>
+         </FI>
+      </SONRS>
+   </SIGNONMSGSRSV1>
+   <BANKMSGSRSV1>
+      <STMTTRNRS>
+         <TRNUID>1</TRNUID>
+         <STATUS>
+            <CODE>0</CODE>
+            <SEVERITY>INFO</SEVERITY>
+         </STATUS>
+         <STMTRS>
+            <CURDEF>BRL</CURDEF>
+            <BANKACCTFROM>
+               <BANKID>1</BANKID>
+               <BRANCHID>3788-5</BRANCHID>
+               <ACCTID>25475-4</ACCTID>
+               <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTFROM>
+            <BANKTRANLIST>
+               <DTSTART>20190520120000[-3:BRT]</DTSTART>
+               <DTEND>20190613120000[-3:BRT]</DTEND>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20190603120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>800.00</TRNAMT>
+                  <FITID>201906030800000</FITID>
+                  <CHECKNUM>000001200042</CHECKNUM>
+                  <REFNUM>1.200.042</REFNUM>
+                  <MEMO>BB RF CP Automático Mais</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20190603120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-800.00</TRNAMT>
+                  <FITID>201906031800000</FITID>
+                  <CHECKNUM>000000060301</CHECKNUM>
+                  <REFNUM>60.301</REFNUM>
+                  <MEMO>Emissão de DOC D - 237 2510 11251698778 RAFAEL MARICATO M</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20190610120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-12.00</TRNAMT>
+                  <FITID>20190610112000</FITID>
+                  <CHECKNUM>610901886005</CHECKNUM>
+                  <REFNUM>861.610.901.886.005</REFNUM>
+                  <MEMO>Tarifa Pacote de Serviços - Cobrança referente 10/06/2019</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20190610120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>12.00</TRNAMT>
+                  <FITID>20190610012000</FITID>
+                  <CHECKNUM>000000000042</CHECKNUM>
+                  <REFNUM>42</REFNUM>
+                  <MEMO>BB RF CP Automático Mais</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20190613120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>800.00</TRNAMT>
+                  <FITID>201906130800000</FITID>
+                  <CHECKNUM>000002103344</CHECKNUM>
+                  <REFNUM>2.103.344</REFNUM>
+                  <MEMO>Resgate Fundo BB</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20190613120000[-3:BRT]</DTPOSTED>
+                  <TRNAMT>-400.00</TRNAMT>
+                  <FITID>201906131400000</FITID>
+                  <CHECKNUM>000000061301</CHECKNUM>
+                  <REFNUM>61.301</REFNUM>
+                  <MEMO>Emissão de DOC D - 237 2510 11251698778 RAFAEL MARICATO M</MEMO>
+               </STMTTRN>
+            </BANKTRANLIST>
+            <LEDGERBAL>
+               <BALAMT>400.00</BALAMT>
+               <DTASOF>20190613120000[-3:BRT]</DTASOF>
+            </LEDGERBAL>
+         </STMTRS>
+      </STMTTRNRS>
+   </BANKMSGSRSV1>
+</OFX>

@@ -1,4 +1,5 @@
-from factory.XMLReaderFactory import XMLReaderFactory
+from ..factory.XMLReaderFactory import XMLReaderFactory
+from ..factory.OFXReaderFactory import OFXReaderFactory
 
 import logging
 
@@ -9,6 +10,15 @@ def xmlReaderTestFile():
     controller = factory.createReaderController()
 
     # este arquivo precisa ser criado  antes de testar
-    with open('./ofx/input_bancodobrasil.ofx', 'rb') as inputFile:
-        bs = controller.read(factory, file=inputFile)
+    with open('./ofx2xlsmbr/ofx/input_bancodobrasil.ofx', 'rb') as inputFile:
+        bs = controller.read(factory, files=[inputFile])
+        logger.info(str(bs))
+
+def ofxXmlReaderTestFile():
+    factory = OFXReaderFactory()
+    controller = factory.createReaderController()
+
+    # este arquivo precisa ser criado  antes de testar
+    with open('./ofx2xlsmbr/ofx/input_bancodobrasil.ofx', 'rb') as inputFile:
+        bs = controller.read(factory, files=[inputFile])
         logger.info(str(bs))

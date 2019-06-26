@@ -1,9 +1,9 @@
 #from ofx2xlsmbr.tests.CSVWriterTest import csvWriterControllerTest
 #from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
 #from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile, ofxMultipleReaderTestFile
-#from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile
+#from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile, ofxXmlReaderTestFile
 #from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsMultipleReaderTestFile
-from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestOFXAndXLS
+#from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestOFXAndXLS
 #from ofx2xlsmbr.controller.AppController import AppController
 
 import logging, sys
@@ -14,11 +14,12 @@ logger = logging.getLogger(__name__)
 def runTests():
     logger.info('running tests')
     #prosperarCoreTest()
-    prosperarCoreTestOFXAndXLS()
+    #prosperarCoreTestOFXAndXLS()
     #ofxReaderTest()
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
     #xmlReaderTestFile()
+    #ofxXmlReaderTestFile()
     #xlsReaderTestFile()
     #xlsMultipleReaderTestFile()
     #csvWriterControllerTest()
