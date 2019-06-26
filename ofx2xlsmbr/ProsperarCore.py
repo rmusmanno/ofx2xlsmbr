@@ -20,4 +20,4 @@ class ProsperarCore():
         #chamar o escritor xlsm
         factory = XLSMWriterFactory()
         writerController = factory.createWriterController()
-        return writerController.write(bankStmts, factory)
+        return writerController.write(bankStmts[0], factory)
