@@ -1,5 +1,5 @@
-from factory.OFXReaderFactory import OFXReaderFactory
-from reader.OFXReaderController import OFXReaderController
+from ..factory.OFXReaderFactory import OFXReaderFactory
+from ..reader.OFXReaderController import OFXReaderController
 
 import logging
 
@@ -16,6 +16,10 @@ def ofxReaderTestFile():
     factory = OFXReaderFactory()
     controller = factory.createReaderController()
 
-    with open('./ofx/extrato_teste.ofx', 'rb') as inputFile:
+    with open('./ofx2xlsmbr/ofx/extrato_teste.ofx', 'rb') as inputFile:
+        bs = controller.read(factory, files=[inputFile])
+        logger.info(str(bs))
+
+    with open('./ofx2xlsmbr/ofx/extrato_teste.ofx', 'rb') as inputFile:
         bs = controller.read(factory, files=[inputFile])
         logger.info(str(bs))

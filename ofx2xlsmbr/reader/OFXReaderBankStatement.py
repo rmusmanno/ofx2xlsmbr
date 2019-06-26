@@ -1,9 +1,17 @@
 from .IReaderBankStatement import IReaderBankStatement
 from ofx2xlsmbr.model.BankStatement import BankStatement
 
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 class OFXReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx) -> BankStatement:
         bs = BankStatement()
+        bs.inflows = []
+        bs.outflows = []
+
         stmts = ofx.statements
         
         # btmts -> bs
