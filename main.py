@@ -3,7 +3,7 @@
 #from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile
 #from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsMultipleReaderTestFile
-#from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestOFXAndXLS
+from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestOFXAndXLS
 #from ofx2xlsmbr.controller.AppController import AppController
 
 import logging, sys
@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 def runTests():
     logger.info('running tests')
     #prosperarCoreTest()
-    #prosperarCoreTestOFXAndXLS()
+    prosperarCoreTestOFXAndXLS()
     #ofxReaderTest()
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
@@ -27,7 +27,7 @@ def runTests():
     #xlsMultipleWriterControllerTest()
 
 def main():
-    logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 
     runTests()
     #app = AppController()

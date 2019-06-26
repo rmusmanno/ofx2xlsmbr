@@ -17,10 +17,16 @@ class ProsperarCore():
         ofxFiles = []
 
         for file in files:
-            if ('.xls' in file.name):
-                xlsFiles.append(file)
-            else:
-                ofxFiles.append(file)
+            try:
+                if ('.xls' in file.filename):
+                    xlsFiles.append(file)
+                else:
+                    ofxFiles.append(file)
+            except AttributeError:
+                if ('.xls' in file.name):
+                    xlsFiles.append(file)
+                else:
+                    ofxFiles.append(file)
 
         logger.info(ofxFiles)
         logger.info(xlsFiles)
