@@ -13,7 +13,7 @@ class XLSMWriterController(IWriterController):
     def write(self, data: BankStatement, factory, outputFilename=''):
         # create worksheet
         wb = Workbook()
-        ws = wb.create_sheet('Extrato')
+        ws = wb.active
 
         formula = '"Profissão,Habitação,Transporte,Dependentes,Saúde,Bem-estar,Outros"'
 
@@ -27,8 +27,10 @@ class XLSMWriterController(IWriterController):
         if (outputFilename == ''):
             with NamedTemporaryFile() as tmp:
                 wb.save(tmp.name)
-                output = BytesIO(tmp.read()).getvalue()
+                #output = BytesIO(tmp.read()).getvalue()
+                tmp.seek(0)
+                stream = tmp.read()
                 wb.close()
-                return output
+                return stream
         else:
             wb.save(filename = outputFilename + '.xlsm')
