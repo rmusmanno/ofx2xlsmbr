@@ -19,7 +19,7 @@ from ofxtools import OFXTree
 
 class OFXReaderController(IReaderController):
     def read(self, factory, files=[]) -> List[BankStatement]:
-        print(files)
+        logger.debug(files)
 
         bankStmts = []
         bsReader = factory.createReaderBankStatement()
@@ -32,6 +32,9 @@ class OFXReaderController(IReaderController):
                     self.treatBradescoException(tree)
                     convertedTree = tree.convert()
                     bs = bsReader.read(factory, convertedTree)
+
+                    logger.debug(str(bs))
+
                     bankStmts.append(bs)
                 except IndexError:
                     # ofx nao consegue ler versao 220. Ler como XML
