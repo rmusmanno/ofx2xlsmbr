@@ -9,8 +9,6 @@ from ofx2xlsmbr.model.CashFlow import CashFlow
 
 from ofx2xlsmbr.writer.IWriterController import IWriterController
 
-import os
-
 class XLSMWriterController(IWriterController):
     def write(self, data: BankStatement, factory, outputFilename=''):
         # create worksheet
@@ -30,7 +28,6 @@ class XLSMWriterController(IWriterController):
             with NamedTemporaryFile() as tmp:
                 wb.save(tmp.name)
                 output = BytesIO(tmp.read())
-                os.unlink(tmp.name)
                 wb.close()
                 return output
         else:
