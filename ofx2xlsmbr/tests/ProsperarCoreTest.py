@@ -10,5 +10,14 @@ def prosperarCoreTest():
     with open('./ofx2xlsmbr/ofx/extrato_teste.ofx', 'rb') as inputFile:
         with open('./ofx2xlsmbr/ofx/input.ofx', 'rb') as inputFile2:
             outputStream = pc.run([inputFile, inputFile2])
-            with open('./output.xlsm','wb') as out:
+            with open('./output.xlsx','wb') as out:
+                out.write(outputStream)
+
+def prosperarCoreTestOFXAndXLS():
+    pc = ProsperarCore()
+
+    with open('./ofx2xlsmbr/ofx/extrato_teste.ofx', 'rb') as inputFile:
+        with open('./ofx2xlsmbr/ofx/test.xlsx', 'rb') as inputFile2:
+            outputStream = pc.run([inputFile, inputFile2])
+            with open('./output.xlsx','wb') as out:
                 out.write(outputStream)
