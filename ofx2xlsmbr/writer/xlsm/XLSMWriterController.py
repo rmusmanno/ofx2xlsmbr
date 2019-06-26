@@ -13,7 +13,7 @@ class XLSMWriterController(IWriterController):
     def write(self, data: BankStatement, factory, outputFilename=''):
         # create worksheet
         wb = Workbook()
-        ws = wb.active
+        ws = wb.create_sheet('Extrato')
 
         formula = '"Profissão,Habitação,Transporte,Dependentes,Saúde,Bem-estar,Outros"'
 
