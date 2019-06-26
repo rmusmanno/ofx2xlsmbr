@@ -34,4 +34,4 @@ class XLSMWriterController(IWriterController):
                 wb.close()
                 return stream
         else:
-            wb.save(filename = outputFilename + '.xlsm')
+            wb.save(filename = outputFilename + '.xlsx')

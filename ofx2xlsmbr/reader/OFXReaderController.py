@@ -31,13 +31,7 @@ class OFXReaderController(IReaderController):
                     tree.parse(file)
                     self.treatBradescoException(tree)
                     convertedTree = tree.convert()
-
-                    logger.debug(convertedTree)
-
                     bs = bsReader.read(factory, convertedTree)
-
-                    logger.debug(str(bs))
-
                     bankStmts.append(bs)
                 except IndexError:
                     # ofx nao consegue ler versao 220. Ler como XML
@@ -47,7 +41,8 @@ class OFXReaderController(IReaderController):
                     bankStmts.append(bs)
             return bankStmts
 
-        return [BankStatement()]
+        bsNull = BankStatement([], [])
+        return [bsNull]
 
     # Este tratamento de erro tem que ser melhor descrito
     def treatBradescoException(self, tree):

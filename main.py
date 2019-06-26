@@ -2,6 +2,7 @@
 #from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
 #from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile
+#from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsMultipleReaderTestFile
 #from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest
 #from ofx2xlsmbr.controller.AppController import AppController
 
@@ -17,6 +18,8 @@ def runTests():
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
     #xmlReaderTestFile()
+    #xlsReaderTestFile()
+    #xlsMultipleReaderTestFile()
     #csvWriterControllerTest()
     #csvFactoryTest()
     #xlsWriterControllerTest()
