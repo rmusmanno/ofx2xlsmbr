@@ -1,6 +1,10 @@
 from ofx2xlsmbr.writer.IWriterCashFlow import IWriterCashFlow
 from ofx2xlsmbr.model.CashFlow import CashFlow
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class XLSMWriterCashFlow(IWriterCashFlow):
     def write(self, cashFlow: CashFlow, factory, xlsmOutput):
         ws = xlsmOutput[0]
@@ -13,6 +17,8 @@ class XLSMWriterCashFlow(IWriterCashFlow):
             cashFlow.value,
             cashFlow.flowType.name
         ]
+
+        logger.debug(cashFlowOutput)
 
         ws.append(cashFlowOutput)
 

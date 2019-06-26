@@ -27,7 +27,6 @@ class XLSMWriterController(IWriterController):
         if (outputFilename == ''):
             with NamedTemporaryFile() as tmp:
                 wb.save(tmp.name)
-                #output = BytesIO(tmp.read()).getvalue()
                 tmp.seek(0)
                 stream = tmp.read()
                 wb.close()
