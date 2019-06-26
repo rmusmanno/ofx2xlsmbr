@@ -22,6 +22,9 @@ class ProsperarCore():
             else:
                 ofxFiles.append(file)
 
+        logger.info(ofxFiles)
+        logger.info(xlsFiles)
+
         #chamar o leitor ofx
         factoryOFX = OFXReaderFactory()
         readerController = factoryOFX.createReaderController()
