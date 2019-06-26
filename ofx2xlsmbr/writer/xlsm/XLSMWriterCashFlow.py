@@ -15,7 +15,6 @@ class XLSMWriterCashFlow(IWriterCashFlow):
             str(cashFlow.date),
             cashFlow.name,
             cashFlow.value,
-            cashFlow.flowType.name
         ]
 
         logger.debug(cashFlowOutput)
@@ -30,7 +29,6 @@ class XLSMWriterCashFlow(IWriterCashFlow):
             'Date',
             'Name',
             'Value',
-            'Type',
             'Category'
         ]
 
