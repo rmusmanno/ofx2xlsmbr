@@ -5,8 +5,9 @@ from model.CashFlow import CashFlow
 
 from writer.IWriterController import IWriterController
 
+# Deprecado, provavelmente nao esta funcionando mais
 class CSVWriterController(IWriterController):
-    def write(self, data: BankStatement, factory, outputFilename):
+    def write(self, data, factory, outputFilename):
         csvData = []
 
         writerBS = factory.createWriterBankStatement()

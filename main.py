@@ -1,6 +1,6 @@
 #from ofx2xlsmbr.tests.CSVWriterTest import csvWriterControllerTest
-from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest
-from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile
+#from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
+#from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile
 #from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest
 #from ofx2xlsmbr.controller.AppController import AppController
@@ -15,10 +15,12 @@ def runTests():
     #prosperarCoreTest()
     #ofxReaderTest()
     #ofxReaderTestFile()
+    #ofxMultipleReaderTestFile()
     #xmlReaderTestFile()
     #csvWriterControllerTest()
     #csvFactoryTest()
-    xlsWriterControllerTest()
+    #xlsWriterControllerTest()
+    #xlsMultipleWriterControllerTest()
 
 def main():
     logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)

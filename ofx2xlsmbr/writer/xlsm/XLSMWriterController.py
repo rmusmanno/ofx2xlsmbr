@@ -10,7 +10,7 @@ from ofx2xlsmbr.model.CashFlow import CashFlow
 from ofx2xlsmbr.writer.IWriterController import IWriterController
 
 class XLSMWriterController(IWriterController):
-    def write(self, data: BankStatement, factory, outputFilename=''):
+    def write(self, data, factory, outputFilename=''):
         # create worksheet
         wb = Workbook()
         ws = wb.active
@@ -22,7 +22,9 @@ class XLSMWriterController(IWriterController):
         ws.add_data_validation(dv)
 
         writerBS = factory.createWriterBankStatement()
-        writerBS.write(data, factory, [ws, dv])
+
+        for bs in data:
+            writerBS.write(bs, factory, [ws, dv])
 
         if (outputFilename == ''):
             with NamedTemporaryFile() as tmp:
