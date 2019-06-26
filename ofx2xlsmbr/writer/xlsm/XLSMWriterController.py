@@ -31,6 +31,7 @@ class XLSMWriterController(IWriterController):
                 wb.save(tmp.name)
                 output = BytesIO(tmp.read())
                 os.unlink(tmp.name)
+                wb.close()
                 return output
         else:
             wb.save(filename = outputFilename + '.xlsm')
