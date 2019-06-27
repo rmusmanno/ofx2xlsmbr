@@ -25,7 +25,7 @@ class XMLReaderController(IReaderController):
         
         bsReader = factory.createReaderBankStatement()
         bs = bsReader.read(factory, tree)
-        return [bs]
+        return bs
 
     def readFile(self, file):
         data = str(file.read())
