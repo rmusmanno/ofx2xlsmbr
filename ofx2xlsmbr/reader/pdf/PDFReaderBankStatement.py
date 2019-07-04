@@ -16,7 +16,7 @@ class PDFReaderBankStatement(IReaderBankStatement):
         
         csReader = factory.createReaderCashFlow()
         headerRow = True
-        for row in result.values:
+        for row in result:
             # Pulando o cabecalho
             if (headerRow):
                 headerRow = False
