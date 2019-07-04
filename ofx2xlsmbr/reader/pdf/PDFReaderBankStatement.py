@@ -23,7 +23,7 @@ class PDFReaderBankStatement(IReaderBankStatement):
                 continue
             
             cs = csReader.read(factory, row)
-            if (cs.value >= 0.0):
+            if (float(cs.value) >= 0.0):
                 bs.inflows.append(cs)
             else:
                 bs.outflows.append(cs)
