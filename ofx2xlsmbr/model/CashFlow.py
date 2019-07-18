@@ -16,6 +16,14 @@ class CashFlow:
         self.value = value
         self.date = date
 
+    def __eq__(self, other):
+        return (
+            self.__class__ == other.__class__ and
+            self.name.strip() == other.name.strip() and
+            self.value == other.value and
+            self.date == other.date
+        )
+
     def __repr__(self):
         return 'CashFlow: \
                 \n\tName: {} \
