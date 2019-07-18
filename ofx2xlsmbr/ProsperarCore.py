@@ -3,6 +3,8 @@ from .factory.XLSReaderFactory import XLSReaderFactory
 from .factory.PDFReaderFactory import PDFReaderFactory
 from .factory.XLSMWriterFactory import XLSMWriterFactory
 
+from .utils.BankStatementAdder import BankStatementAdder
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -53,7 +55,25 @@ class ProsperarCore():
         readerController = factoryPDF.createReaderController()
         pdfBankStmts = readerController.read(factoryPDF, files=pdfFiles)
 
-        bankStmts = xlsBankStmts + ofxBankStmts + pdfBankStmts
+        bankStmt = None
+        if ofxBankStmts:
+            bankStmt = ofxBankStmts[0]
+        elif xlsBankStmts:
+            bankStmt = xlsBankStmts[0]
+        elif pdfBankStmts:
+            bankStmt = pdfBankStmts[0]
+
+        adder = BankStatementAdder()
+
+        for bs in ofxBankStmts:
+            bankStmt = adder.add(bankStmt, bs)
+        for bs in xlsBankStmts:
+            bankStmt = adder.add(bankStmt, bs)
+        for bs in pdfBankStmts:
+            bankStmt = adder.add(bankStmt, bs)
+        bankStmts = [bankStmt]
+
+        #bankStmts = xlsBankStmts + ofxBankStmts + pdfBankStmts
 
         #chamar o escritor xlsm
         factory = XLSMWriterFactory()
