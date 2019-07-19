@@ -3,8 +3,6 @@ from ofx2xlsmbr.model.BankStatement import BankStatement
 class BankStatementAdder():
     def add(self, bankStatement_1: BankStatement, bankStatement_2: BankStatement, removeDuplicates = True) -> BankStatement:
         bnkStmt = BankStatement()
-        bnkStmt.inflows = []
-        bnkStmt.outflows = []
 
         bnkStmt.inflows += bankStatement_1.inflows
         bnkStmt.outflows += bankStatement_1.outflows
