@@ -9,8 +9,6 @@ logger = logging.getLogger(__name__)
 class XLSReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx) -> BankStatement:
         bs = BankStatement()
-        bs.inflows = []
-        bs.outflows = []
 
         ws = ofx
         

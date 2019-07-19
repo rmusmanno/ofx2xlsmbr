@@ -2,11 +2,9 @@ from typing import List
 from .CashFlow import CashFlow
 
 class BankStatement:
-    def __init__(self, 
-                inflows: List[CashFlow] = [], 
-                outflows: List[CashFlow] = []):
-        self.inflows = inflows
-        self.outflows = outflows
+    def __init__(self):
+        self.inflows = []
+        self.outflows = []
 
     def __repr__(self):
         bs = 'BankStatement:'

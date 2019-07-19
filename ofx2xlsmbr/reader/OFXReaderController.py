@@ -42,7 +42,7 @@ class OFXReaderController(IReaderController):
                     bankStmts.append(bs)
             return bankStmts
 
-        bsNull = BankStatement([], [])
+        bsNull = BankStatement()
         return [bsNull]
 
     # Este tratamento de erro tem que ser melhor descrito

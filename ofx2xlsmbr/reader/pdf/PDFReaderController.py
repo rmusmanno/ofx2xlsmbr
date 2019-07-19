@@ -26,5 +26,5 @@ class PDFReaderController(IReaderController):
                 bankStmts.append(bs)
             return bankStmts
 
-        bsNull = BankStatement([], [])
+        bsNull = BankStatement()
         return [bsNull]
