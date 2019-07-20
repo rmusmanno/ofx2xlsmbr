@@ -11,7 +11,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-class ProsperarCore():
+class ProsperarCore(object):
     def run(self, files):
         #ler o caminho do arquivo e verificar se ele existe
         if (not files):
@@ -58,6 +58,7 @@ class ProsperarCore():
         pdfBankStmts = readerController.read(factoryPDF, files=pdfFiles)
 
         bankStmt = BankStatement()
+        logger.info(bankStmt)
 
         adder = BankStatementAdder()
 

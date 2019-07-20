@@ -1,6 +1,6 @@
 from ofx2xlsmbr.model.BankStatement import BankStatement
 
-class BankStatementAdder():
+class BankStatementAdder(object):
     def add(self, bankStatement_1: BankStatement, bankStatement_2: BankStatement, removeDuplicates = True) -> BankStatement:
         bnkStmt = BankStatement()
 

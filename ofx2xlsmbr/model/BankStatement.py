@@ -1,10 +1,10 @@
 from typing import List
 from .CashFlow import CashFlow
 
-class BankStatement:
+class BankStatement(object):
     def __init__(self):
-        self.inflows = []
-        self.outflows = []
+        self.inflows: List[CashFlow] = []
+        self.outflows: List[CashFlow] = []
 
     def __repr__(self):
         bs = 'BankStatement:'
@@ -16,6 +16,10 @@ class BankStatement:
         for cs in self.outflows:
             bs += '\n' + str(cs)
         return bs
+
+    def __del__(self):
+        self.inflows = None
+        self.outflows = None
 
     def merge(self, other):
         self.inflows.append(other.inflows)

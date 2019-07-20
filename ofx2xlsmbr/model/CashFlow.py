@@ -5,12 +5,12 @@ class CashFlowType(Enum):
     DEBIT = 1
     CREDIT = 2
 
-class CashFlow:
+class CashFlow(object):
     def __init__(self,
-                name = 'N/A',
+                name: str = 'N/A',
                 flowType: CashFlowType = CashFlowType.DEBIT,
                 value: float = 0.0,
-                date: datetime = 'N/A'):
+                date: str = 'N/A'):
         self.name = name
         self.flowType = flowType
         self.value = value
