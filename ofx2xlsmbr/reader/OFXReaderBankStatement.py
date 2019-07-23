@@ -10,6 +10,8 @@ class OFXReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx) -> BankStatement:
         bs = BankStatement()
 
+        logger.info(ofx)
+
         stmts = ofx.statements
         
         # btmts -> bs

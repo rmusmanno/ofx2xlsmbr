@@ -57,3 +57,22 @@ class OFXReaderController(IReaderController):
             pass
             # se dtServer for um datetime, ele da erro na conversao para int
             # logger.info('Correcting DTServer')
+
+        # se for cartao de credito, a data do balanco vem errada
+        try:
+            dtBalance = root.findall("CREDITCARDMSGSRSV1")[0] \
+                            .findall("CCSTMTTRNRS")[0] \
+                            .findall("CCSTMTRS")[0] \
+                            .findall("LEDGERBAL")[0] \
+                            .findall("DTASOF")[0]
+            
+            try:
+                if (int(dtBalance.text) == 0):
+                    unknownDateInThePast = datetime.datetime(1985, 10, 21, tzinfo=timezone('Brazil/East'))
+                    dtBalance.text = unknownDateInThePast
+            except ValueError:
+                pass
+        except IndexError:
+            pass
+
+            
