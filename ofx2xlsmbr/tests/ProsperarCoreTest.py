@@ -13,6 +13,14 @@ def prosperarCoreTest():
             with open('./output.xlsx','wb') as out:
                 out.write(outputStream)
 
+def prosperarCoreTestReturnBS():
+    pc = ProsperarCore()
+
+    with open('./ofx2xlsmbr/ofx/extrato_teste.ofx', 'rb') as inputFile:
+        with open('./ofx2xlsmbr/ofx/input.ofx', 'rb') as inputFile2:
+            bsStmts = pc.run([inputFile, inputFile2], True)
+            logger.info(bsStmts)
+
 def prosperarCoreTestDuplicateEntry():
     pc = ProsperarCore()
 

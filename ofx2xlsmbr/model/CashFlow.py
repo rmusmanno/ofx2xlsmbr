@@ -1,6 +1,8 @@
 from enum import Enum
 from datetime import datetime
 
+from json import JSONEncoder
+
 class CashFlowType(Enum):
     DEBIT = 1
     CREDIT = 2
@@ -33,3 +35,12 @@ class CashFlow(object):
                                     self.flowType.name, 
                                     self.value,
                                     self.date)
+
+class CSEncoder(JSONEncoder):
+    def default(self, o):
+        if isinstance(o, CashFlow):
+            return {'CashFlow': {
+                'Name': str(o.name),
+                'Value': str(o.value),
+                'Date': str(o.date)
+            }}

@@ -2,6 +2,7 @@ from .factory.OFXReaderFactory import OFXReaderFactory
 from .factory.XLSReaderFactory import XLSReaderFactory
 from .factory.PDFReaderFactory import PDFReaderFactory
 from .factory.XLSMWriterFactory import XLSMWriterFactory
+from .factory.BSWriterFactory import BSWriterFactory
 
 from .utils.BankStatementAdder import BankStatementAdder
 
@@ -12,7 +13,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class ProsperarCore(object):
-    def run(self, files):
+    def run(self, files, returnBankStatement=False):
         #ler o caminho do arquivo e verificar se ele existe
         if (not files):
             logger.info('No files specified.')
@@ -72,7 +73,13 @@ class ProsperarCore(object):
 
         #bankStmts = xlsBankStmts + ofxBankStmts + pdfBankStmts
 
-        #chamar o escritor xlsm
-        factory = XLSMWriterFactory()
+        factory = None
+
+        if (returnBankStatement):
+            factory = BSWriterFactory()
+        else:
+            #chamar o escritor xlsm
+            factory = XLSMWriterFactory()
+
         writerController = factory.createWriterController()
         return writerController.write(bankStmts, factory)
