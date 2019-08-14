@@ -83,3 +83,6 @@ class ProsperarCore(object):
 
         writerController = factory.createWriterController()
         return writerController.write(bankStmts, factory)
+
+    def createXLSX(self, bankStatement):
+        print(bankStatement)

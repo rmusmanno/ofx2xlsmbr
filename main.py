@@ -4,7 +4,7 @@
 #from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile, ofxXmlReaderTestFile
 #from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsMultipleReaderTestFile
-#from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestReturnBS, prosperarCoreTestOFXAndXLS, prosperarCoreTestDuplicateEntry
+from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestReturnBS, prosperarCoreTestOFXAndXLS, prosperarCoreTestDuplicateEntry, prosperarCoreTestReceiveBS
 #from ofx2xlsmbr.tests.BankStatementAdderTest import bankStatementAdderTest
 #from ofx2xlsmbr.controller.AppController import AppController
 
@@ -20,6 +20,7 @@ def runTests():
     #prosperarCoreTestReturnBS()
     #prosperarCoreTestOFXAndXLS()
     #prosperarCoreTestDuplicateEntry()
+    prosperarCoreTestReceiveBS()
     #ofxReaderTest()
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
