@@ -12,13 +12,13 @@ setup(
     'ofx2xlsmbr.writer.xlsm',
     'ofx2xlsmbr.writer.bankstatement',
     'ofx2xlsmbr.utils'],   # Chose the same as "name"
-  version = '0.99.7',      # Start with a small number and increase it with every change you make
+  version = '0.99.8',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Convert ofx + xlsx to xlsx',   # Give a short description about your library
   author = 'Rafael Musmanno',                   # Type in your name
   author_email = 'rafa.musmanno@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/rmusmanno/ofx2xlsmbr/',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/rmusmanno/ofx2xlsmbr/archive/v0.99.7.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/rmusmanno/ofx2xlsmbr/archive/v0.99.8.tar.gz',    # I explain this later on
   keywords = ['ofx', 'xlsx'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
         'et-xmlfile',
