@@ -25,6 +25,14 @@ def xlsReaderTestFile2():
         bs = controller.read(factory, files=[inputFile])
         logger.info(str(bs))
 
+def xlsReaderTestFile3():
+    factory = XLSReaderFactory()
+    controller = factory.createReaderController()
+
+    with open('./ofx2xlsmbr/ofx/Cartão Fabio.xlsx', 'rb') as inputFile:
+        bs = controller.read(factory, files=[inputFile])
+        logger.info(str(bs))
+
 def xlsMultipleReaderTestFile():
     factory = XLSReaderFactory()
     controller = factory.createReaderController()

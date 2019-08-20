@@ -23,11 +23,12 @@ class XLSReaderBankStatement(IReaderBankStatement):
                 continue
             
             cs = csReader.read(factory, row)
-            if (isinstance(cs.value, str)):
-                cs.value = Decimal(cs.value.replace(',', '.'))
-            if (cs.value >= Decimal(0.0)):
-                bs.inflows.append(cs)
-            else:
-                bs.outflows.append(cs)
+            if (cs.value != None):
+                if (isinstance(cs.value, str)):
+                    cs.value = Decimal(cs.value.replace(',', '.'))
+                if (cs.value >= Decimal(0.0)):
+                    bs.inflows.append(cs)
+                else:
+                    bs.outflows.append(cs)
 
         return bs

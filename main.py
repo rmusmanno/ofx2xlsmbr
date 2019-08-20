@@ -3,7 +3,7 @@
 #from ofx2xlsmbr.tests.BSWriterTest import bsWriterControllerTest, bsMultipleWriterControllerTest
 #from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile, ofxXmlReaderTestFile
-from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsReaderTestFile2, xlsMultipleReaderTestFile
+from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsReaderTestFile2, xlsReaderTestFile3, xlsMultipleReaderTestFile
 #from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestReturnBS, prosperarCoreTestOFXAndXLS, prosperarCoreTestDuplicateEntry, prosperarCoreTestReceiveBS
 #from ofx2xlsmbr.tests.BankStatementAdderTest import bankStatementAdderTest
 #from ofx2xlsmbr.controller.AppController import AppController
@@ -28,8 +28,9 @@ def runTests():
     #bsMultipleWriterControllerTest()
     #xmlReaderTestFile()
     #ofxXmlReaderTestFile()
-    xlsReaderTestFile()
-    xlsReaderTestFile2()
+    #xlsReaderTestFile()
+    #xlsReaderTestFile2()
+    xlsReaderTestFile3()
     #xlsMultipleReaderTestFile()
     #csvWriterControllerTest()
     #csvFactoryTest()
