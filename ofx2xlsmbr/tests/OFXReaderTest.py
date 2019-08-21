@@ -12,6 +12,14 @@ def ofxReaderTest():
     bs = controller.read(factory, inputFilename='./ofx/extrato_teste.ofx')
     logger.info(str(bs))
 
+def ofxReaderTestCartaoBradesco():
+    factory = OFXReaderFactory()
+    controller = factory.createReaderController()
+
+    with open('./ofx2xlsmbr/ofx/Bradesco_20082019_163456.ofx', 'rb') as inputFile:
+        bs = controller.read(factory, files=[inputFile])
+        logger.info(str(bs))
+
 def ofxReaderTestFile():
     factory = OFXReaderFactory()
     controller = factory.createReaderController()

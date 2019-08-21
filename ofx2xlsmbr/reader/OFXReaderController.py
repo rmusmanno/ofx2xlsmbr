@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 import ofxtools
 from ofxtools import OFXTree
+from ofxtools.Types import OFXSpecError
 
 class OFXReaderController(IReaderController):
     def read(self, factory, files=[]) -> List[BankStatement]:
@@ -60,18 +61,17 @@ class OFXReaderController(IReaderController):
 
         # se for cartao de credito, a data do balanco vem errada
         try:
-            dtBalance = root.findall("CREDITCARDMSGSRSV1")[0] \
-                            .findall("CCSTMTTRNRS")[0] \
-                            .findall("CCSTMTRS")[0] \
-                            .findall("LEDGERBAL")[0] \
-                            .findall("DTASOF")[0]
-            
-            try:
-                if (int(dtBalance.text) == 0):
-                    unknownDateInThePast = datetime.datetime(1985, 10, 21, tzinfo=timezone('Brazil/East'))
-                    dtBalance.text = unknownDateInThePast
-            except ValueError:
-                pass
+            creditCardTransRs = root.findall("CREDITCARDMSGSRSV1")[0].findall("CCSTMTTRNRS")
+
+            for c in creditCardTransRs:
+                dtBalance = c.findall("CCSTMTRS")[0].findall("LEDGERBAL")[0].findall("DTASOF")[0]
+
+                try:
+                    if (int(dtBalance.text) == 0):
+                        unknownDateInThePast = datetime.datetime(1985, 10, 21, tzinfo=timezone('Brazil/East'))
+                        dtBalance.text = unknownDateInThePast
+                except ValueError:
+                    pass
         except IndexError:
             pass
 
