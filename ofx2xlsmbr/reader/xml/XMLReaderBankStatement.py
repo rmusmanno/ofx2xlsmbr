@@ -4,7 +4,7 @@ from ofx2xlsmbr.model.BankStatement import BankStatement
 import xml.etree.ElementTree as ET
 
 class XMLReaderBankStatement(IReaderBankStatement):
-    def read(self, factory, ofx) -> BankStatement:
+    def read(self, factory, ofx, options=None) -> BankStatement:
         bs = BankStatement()
 
         tranList = ofx.find('BANKMSGSRSV1').find('STMTTRNRS').find('STMTRS').find('BANKTRANLIST')

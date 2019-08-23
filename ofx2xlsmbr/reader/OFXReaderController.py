@@ -31,8 +31,17 @@ class OFXReaderController(IReaderController):
                     tree = OFXTree()
                     tree.parse(file)
                     self.treatBradescoException(tree)
+
+                    #check creditcard
+                    root = tree.getroot()
+                    options = {}
+                    if (root.findall("CREDITCARDMSGSRSV1")):
+                        options['creditcard'] = True
+                    else:
+                        options['creditcard'] = False
+
                     convertedTree = tree.convert()
-                    bs = bsReader.read(factory, convertedTree)
+                    bs = bsReader.read(factory, convertedTree, options)
                     bankStmts.append(bs)
                 except IndexError:
                     # ofx nao consegue ler versao 220. Ler como XML

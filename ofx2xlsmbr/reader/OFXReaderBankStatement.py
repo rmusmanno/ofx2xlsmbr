@@ -1,16 +1,23 @@
 from .IReaderBankStatement import IReaderBankStatement
 from ofx2xlsmbr.model.BankStatement import BankStatement
 
+from decimal import Decimal
+
 import logging
 
 logger = logging.getLogger(__name__)
 
 
 class OFXReaderBankStatement(IReaderBankStatement):
-    def read(self, factory, ofx) -> BankStatement:
+    def read(self, factory, ofx, options=None) -> BankStatement:
         bs = BankStatement()
 
         logger.info(ofx)
+
+        signalMultiplier = 1
+        if (options):
+            if (options['creditcard'] == True):
+                signalMultiplier = -1
 
         stmts = ofx.statements
         
@@ -20,7 +27,9 @@ class OFXReaderBankStatement(IReaderBankStatement):
         csReader = factory.createReaderCashFlow()
         for tx in txs:
             cs = csReader.read(factory, tx)
-            if (cs.value >= 0.0):
+            cs.value = Decimal(cs.value)
+            cs.value *= signalMultiplier
+            if (cs.value >= Decimal(0.0)):
                 bs.inflows.append(cs)
             else:
                 bs.outflows.append(cs)

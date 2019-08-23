@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class PDFReaderBankStatement(IReaderBankStatement):
-    def read(self, factory, ofx) -> BankStatement:
+    def read(self, factory, ofx, options=None) -> BankStatement:
         bs = BankStatement()
 
         result = ofx

@@ -1,7 +1,7 @@
 #from ofx2xlsmbr.tests.CSVWriterTest import csvWriterControllerTest
 #from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
 #from ofx2xlsmbr.tests.BSWriterTest import bsWriterControllerTest, bsMultipleWriterControllerTest
-from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestFile, ofxMultipleReaderTestFile
+from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestCartaoBradesco2, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile, ofxXmlReaderTestFile
 #from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsReaderTestFile2, xlsReaderTestFile3, xlsMultipleReaderTestFile
 #from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestReturnBS, prosperarCoreTestOFXAndXLS, prosperarCoreTestDuplicateEntry, prosperarCoreTestReceiveBS
@@ -22,7 +22,8 @@ def runTests():
     #prosperarCoreTestDuplicateEntry()
     #prosperarCoreTestReceiveBS()
     #ofxReaderTest()
-    ofxReaderTestCartaoBradesco()
+    #ofxReaderTestCartaoBradesco()
+    ofxReaderTestCartaoBradesco2()
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
     #bsWriterControllerTest()
