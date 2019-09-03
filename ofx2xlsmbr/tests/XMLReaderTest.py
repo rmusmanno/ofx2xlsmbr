@@ -14,6 +14,15 @@ def xmlReaderTestFile():
         bs = controller.read(factory, files=[inputFile])
         logger.info(str(bs))
 
+def xmlReaderTestFileCreditCard():
+    factory = XMLReaderFactory()
+    controller = factory.createReaderController()
+
+    # este arquivo precisa ser criado  antes de testar
+    with open('./ofx2xlsmbr/ofx/BB Cartao Julho.ofx', 'rb') as inputFile:
+        bs = controller.read(factory, files=[inputFile])
+        logger.info(str(bs))
+
 def ofxXmlReaderTestFile():
     factory = OFXReaderFactory()
     controller = factory.createReaderController()

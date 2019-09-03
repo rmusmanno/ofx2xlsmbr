@@ -11,8 +11,11 @@ class XMLReaderCashFlow(IReaderCashFlow):
         cs.value = float(ofx.find('TRNAMT').text)
         dtposted = ofx.find('DTPOSTED').text
 
-        # YYYYMMDDHHMMSS
-        cs.date = datetime.strptime(dtposted[:dtposted.find('[')], '%Y%m%d%H%M%S')
+        try:
+            # YYYYMMDDHHMMSS
+            cs.date = datetime.strptime(dtposted[:dtposted.find('[')], '%Y%m%d%H%M%S')
+        except:
+            cs.date = datetime.strptime(dtposted, '%Y%m%d')
         
 
         if (ofx.find('TRNTYPE') == 'CREDIT'):

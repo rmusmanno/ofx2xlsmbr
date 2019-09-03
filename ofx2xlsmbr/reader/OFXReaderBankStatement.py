@@ -10,8 +10,6 @@ logger = logging.getLogger(__name__)
 
 class OFXReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx, options=None):
-        #logger.info(ofx)
-
         signalMultiplier = 1
         if (options):
             if (options['creditcard'] == True):

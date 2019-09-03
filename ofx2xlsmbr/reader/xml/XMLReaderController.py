@@ -16,15 +16,21 @@ class XMLReaderController(IReaderController):
     def read(self, factory, files=[]) -> List[BankStatement]:
         data = ''
         tree = None
+        options = {}
 
         if (files):
             file = files[0]
             data = self.readFile(file)
             parser = etree.XMLParser(recover=True)
             tree = etree.fromstring(data, parser=parser)
+
+            if (tree.findall("CREDITCARDMSGSRSV1")):
+                options['creditcard'] = True
+            else:
+                options['creditcard'] = False
         
         bsReader = factory.createReaderBankStatement()
-        bs = bsReader.read(factory, tree)
+        bs = bsReader.read(factory, tree, options)
         return bs
 
     def readFile(self, file):
