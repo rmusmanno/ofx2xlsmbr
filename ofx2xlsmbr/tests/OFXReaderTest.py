@@ -9,7 +9,7 @@ def ofxReaderTest():
     factory = OFXReaderFactory()
     controller = factory.createReaderController()
 
-    bs = controller.read(factory, inputFilename='./ofx/extrato_teste.ofx')
+    bs = controller.read(factory, files=['./ofx2xlsmbr/ofx/Bradesco Cartao.ofx'])
     logger.info(str(bs))
 
 def ofxReaderTestCartaoBradesco():
