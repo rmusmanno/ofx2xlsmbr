@@ -1,10 +1,10 @@
 #from ofx2xlsmbr.tests.CSVWriterTest import csvWriterControllerTest
 #from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
 #from ofx2xlsmbr.tests.BSWriterTest import bsWriterControllerTest, bsMultipleWriterControllerTest
-from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestCartaoBradesco2, ofxReaderTestFile, ofxMultipleReaderTestFile
+#from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestCartaoBradescoDuplo, ofxReaderTestCartaoBradesco2, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile, ofxXmlReaderTestFile
 #from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsReaderTestFile2, xlsReaderTestFile3, xlsMultipleReaderTestFile
-#from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestReturnBS, prosperarCoreTestOFXAndXLS, prosperarCoreTestDuplicateEntry, prosperarCoreTestReceiveBS
+#from ofx2xlsmbr.tests.ProsperarCoreTest import prosperarCoreTest, prosperarCoreTestInputDuploOfx, prosperarCoreTestReturnBS, prosperarCoreTestOFXAndXLS, prosperarCoreTestDuplicateEntry, prosperarCoreTestReceiveBS
 #from ofx2xlsmbr.tests.BankStatementAdderTest import bankStatementAdderTest
 #from ofx2xlsmbr.controller.AppController import AppController
 
@@ -17,13 +17,15 @@ def runTests():
     logger.info('running tests')
     #bankStatementAdderTest()
     #prosperarCoreTest()
+    #prosperarCoreTestInputDuploOfx()
     #prosperarCoreTestReturnBS()
     #prosperarCoreTestOFXAndXLS()
     #prosperarCoreTestDuplicateEntry()
     #prosperarCoreTestReceiveBS()
     #ofxReaderTest()
     #ofxReaderTestCartaoBradesco()
-    ofxReaderTestCartaoBradesco2()
+    #ofxReaderTestCartaoBradescoDuplo()
+    #ofxReaderTestCartaoBradesco2()
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
     #bsWriterControllerTest()

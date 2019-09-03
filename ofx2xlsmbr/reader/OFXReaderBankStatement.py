@@ -9,10 +9,8 @@ logger = logging.getLogger(__name__)
 
 
 class OFXReaderBankStatement(IReaderBankStatement):
-    def read(self, factory, ofx, options=None) -> BankStatement:
-        bs = BankStatement()
-
-        logger.info(ofx)
+    def read(self, factory, ofx, options=None):
+        #logger.info(ofx)
 
         signalMultiplier = 1
         if (options):
@@ -20,18 +18,26 @@ class OFXReaderBankStatement(IReaderBankStatement):
                 signalMultiplier = -1
 
         stmts = ofx.statements
-        
-        # btmts -> bs
-        txs = stmts[0].transactions
 
         csReader = factory.createReaderCashFlow()
-        for tx in txs:
-            cs = csReader.read(factory, tx)
-            cs.value = Decimal(cs.value)
-            cs.value *= signalMultiplier
-            if (cs.value >= Decimal(0.0)):
-                bs.inflows.append(cs)
-            else:
-                bs.outflows.append(cs)
 
-        return bs
+        bankStmts = []
+        
+        # btmts -> bs
+        for stmt in stmts:
+            bs = BankStatement()
+
+            txs = stmt.transactions
+
+            for tx in txs:
+                cs = csReader.read(factory, tx)
+                cs.value = Decimal(cs.value)
+                cs.value *= signalMultiplier
+                if (cs.value >= Decimal(0.0)):
+                    bs.inflows.append(cs)
+                else:
+                    bs.outflows.append(cs)
+
+            bankStmts.append(bs)
+
+        return bankStmts
