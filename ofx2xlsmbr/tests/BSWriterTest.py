@@ -5,44 +5,52 @@ from ..model.CashFlow import CashFlow, CashFlowType
 
 import datetime
 import logging
+import unittest
 
 logger = logging.getLogger(__name__)
 
-def bsWriterControllerTest():
-    factory = BSWriterFactory()
 
-    outflow = [CashFlow('debit 1', CashFlowType.DEBIT, -100.0, datetime.datetime.now()),
-                CashFlow('debit 2', CashFlowType.DEBIT, -127.0),
-                CashFlow('credit 1', CashFlowType.CREDIT, -42.0)]
+class BSWriterTest(unittest.TestCase):
 
-    inflow = [CashFlow('credit 1', CashFlowType.CREDIT, 1000.0)]
+    def test_bsWriterController(self):
+        factory = BSWriterFactory()
 
-    bs = BankStatement()
-    bs.inflows = inflow
-    bs.outflows = outflow
+        outflow = [CashFlow('debit 1', CashFlowType.DEBIT, -100.0, datetime.datetime.now()),
+                    CashFlow('debit 2', CashFlowType.DEBIT, -127.0),
+                    CashFlow('credit 1', CashFlowType.CREDIT, -42.0)]
 
-    writerController = factory.createWriterController()
-    bstmtsJson = writerController.write([bs], factory)
-    logger.info(bstmtsJson)
+        inflow = [CashFlow('credit 1', CashFlowType.CREDIT, 1000.0)]
 
-def bsMultipleWriterControllerTest():
-    factory = BSWriterFactory()
+        bs = BankStatement()
+        bs.inflows = inflow
+        bs.outflows = outflow
 
-    outflow = [CashFlow('debit 1', CashFlowType.DEBIT, -100.0, datetime.datetime.now()),
-                CashFlow('debit 2', CashFlowType.DEBIT, -127.0),
-                CashFlow('credit 1', CashFlowType.CREDIT, -42.0)]
+        writerController = factory.createWriterController()
+        bstmtsJson = writerController.write([bs], factory)
+        logger.info(bstmtsJson)
 
-    inflow = [CashFlow('credit 1', CashFlowType.CREDIT, 1000.0)]
+    def test_bsMultipleWriterController(self):
+        factory = BSWriterFactory()
 
-    inflow2 = [CashFlow('credit 2', CashFlowType.CREDIT, 2000.0)]
+        outflow = [CashFlow('debit 1', CashFlowType.DEBIT, -100.0, datetime.datetime.now()),
+                    CashFlow('debit 2', CashFlowType.DEBIT, -127.0),
+                    CashFlow('credit 1', CashFlowType.CREDIT, -42.0)]
 
-    bs = BankStatement()
-    bs.inflows = inflow
-    bs.outflows = outflow
-    bs2 = BankStatement()
-    bs2.inflows = inflow2
-    bs2.outflows = outflow
+        inflow = [CashFlow('credit 1', CashFlowType.CREDIT, 1000.0)]
 
-    writerController = factory.createWriterController()
-    bstmtsJson = writerController.write([bs], factory)
-    logger.info(bstmtsJson)
+        inflow2 = [CashFlow('credit 2', CashFlowType.CREDIT, 2000.0)]
+
+        bs = BankStatement()
+        bs.inflows = inflow
+        bs.outflows = outflow
+        bs2 = BankStatement()
+        bs2.inflows = inflow2
+        bs2.outflows = outflow
+
+        writerController = factory.createWriterController()
+        bstmtsJson = writerController.write([bs], factory)
+        logger.info(bstmtsJson)
+
+
+if __name__ == '__main__':
+    unittest.main()
