@@ -7,16 +7,19 @@ class AccountType(Enum):
 class Origin:
 
     def __init__(self, account):
+        if account == None:
+            raise ValueError('Account must be an object')
         self.account_id = account.acctid
-
+        self.branch_id = None
+        
         if hasattr(account,'bankid'):
             self.institution_number = account.bankid
             self.account_type = AccountType.BANKACCOUNT
-            self.branch_id = None
+            if hasattr(account,'branchid'):
+                self.branch_id = account.branchid
         else:
             self.institution_number = None
-            self.account_type = AccountType.BANKACCOUNT
-            self.branch_id = None            
+            self.account_type = AccountType.CREDITCARD
 
     def __str__(self):
         return "Account:{} / Type: {}".format(self.account_id, self.account_type)

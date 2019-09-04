@@ -3,6 +3,8 @@ from datetime import datetime
 
 from json import JSONEncoder
 
+from .Origin import Origin
+
 class CashFlowType(Enum):
     DEBIT = 1
     CREDIT = 2
@@ -50,6 +52,3 @@ class CSEncoder(JSONEncoder):
                 'Date': str(o.date),
                 'Origin': str(o.origin)
             }}
-
-
-class CashFlowOrigin():

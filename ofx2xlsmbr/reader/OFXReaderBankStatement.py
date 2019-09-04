@@ -2,6 +2,7 @@ from enum import Enum
 
 from .IReaderBankStatement import IReaderBankStatement
 from ofx2xlsmbr.model.BankStatement import BankStatement
+from ofx2xlsmbr.model.Origin import Origin
 
 from decimal import Decimal
 
@@ -25,16 +26,8 @@ class OFXReaderBankStatement(IReaderBankStatement):
         # btmts -> bs
         for stmt in stmts:
             bs = BankStatement()
-            
-            
-            origin_dict = {
-                'institution_number': institution_number,
-                'branch_number': branch_id,
-                'account_number': account_id,
-                'type': AccountType
-            }
-
-            
+            account = stmt.account
+            origin = Origin(account)
 
             txs = stmt.transactions
 
@@ -47,7 +40,7 @@ class OFXReaderBankStatement(IReaderBankStatement):
                 else:
                     bs.outflows.append(cs)
                 
-                cs.origin = origin_dict
+                cs.origin = origin
 
             bankStmts.append(bs)
 

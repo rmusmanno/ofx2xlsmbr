@@ -8,9 +8,10 @@ logger = logging.getLogger(__name__)
 def ofxReaderTest():
     factory = OFXReaderFactory()
     controller = factory.createReaderController()
-
-    bs = controller.read(factory, files=['./ofx2xlsmbr/ofx/Bradesco Cartao.ofx'])
-    logger.info(str(bs))
+    
+    with open('./ofx2xlsmbr/ofx/Credit + Acct.ofx', 'rb') as inputFile:
+        bs = controller.read(factory, files=[inputFile])
+        logger.info(str(bs))
 
 def ofxReaderTestCartaoBradesco():
     factory = OFXReaderFactory()
