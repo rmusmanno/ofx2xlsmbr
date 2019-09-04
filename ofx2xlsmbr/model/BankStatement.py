@@ -22,6 +22,9 @@ class BankStatement(object):
         self.inflows = None
         self.outflows = None
 
+    def cashflows(self):
+        return self.inflows + self.outflows
+
     def merge(self, other):
         self.inflows.append(other.inflows)
         self.outflows.append(other.outflows)
