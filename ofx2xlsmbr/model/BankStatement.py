@@ -1,8 +1,6 @@
 from typing import List
 from .CashFlow import CashFlow, CSEncoder
 
-import json
-from json import JSONEncoder
 
 class BankStatement(object):
     def __init__(self):
@@ -27,19 +25,3 @@ class BankStatement(object):
     def merge(self, other):
         self.inflows.append(other.inflows)
         self.outflows.append(other.outflows)
-
-class BSEncoder(JSONEncoder):
-    def default(self, o):
-        print(o)
-        if isinstance(o, BankStatement):
-            bs = []
-
-            for cs in o.inflows:
-                bs.append(json.dumps(cs, cls=CSEncoder))
-            for cs in o.outflows:
-                bs.append(json.dumps(cs, cls=CSEncoder))
-
-            root = {}
-            root['BankStatement'] = bs
-            return root
-        

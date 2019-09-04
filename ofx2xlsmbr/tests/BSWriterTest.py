@@ -6,6 +6,7 @@ from ..model.CashFlow import CashFlow, CashFlowType
 import datetime
 import logging
 import unittest
+import sys
 
 logger = logging.getLogger(__name__)
 
@@ -26,8 +27,9 @@ class BSWriterTest(unittest.TestCase):
         bs.outflows = outflow
 
         writerController = factory.createWriterController()
-        bstmtsJson = writerController.write([bs], factory)
-        logger.info(bstmtsJson)
+        bstmts = writerController.write([bs], factory)
+        logger.info(bstmts)
+
 
     def test_bsMultipleWriterController(self):
         factory = BSWriterFactory()
@@ -48,9 +50,10 @@ class BSWriterTest(unittest.TestCase):
         bs2.outflows = outflow
 
         writerController = factory.createWriterController()
-        bstmtsJson = writerController.write([bs], factory)
-        logger.info(bstmtsJson)
+        bstmts = writerController.write([bs, bs2], factory)
+        logger.info(bstmts)
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
     unittest.main()
