@@ -31,7 +31,7 @@ def runTests():
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
     #xmlReaderTestFile()
-    # xmlReaderTestFileCreditCard()
+    #xmlReaderTestFileCreditCard()
     #ofxXmlReaderTestFile()
     #xlsReaderTestFile()
     #xlsReaderTestFile2()

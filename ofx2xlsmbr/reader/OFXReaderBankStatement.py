@@ -1,12 +1,14 @@
+from enum import Enum
+
 from .IReaderBankStatement import IReaderBankStatement
 from ofx2xlsmbr.model.BankStatement import BankStatement
+from ofx2xlsmbr.model.Origin import Origin
 
 from decimal import Decimal
 
 import logging
 
 logger = logging.getLogger(__name__)
-
 
 class OFXReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx, options=None):
@@ -24,6 +26,8 @@ class OFXReaderBankStatement(IReaderBankStatement):
         # btmts -> bs
         for stmt in stmts:
             bs = BankStatement()
+            account = stmt.account
+            origin = Origin(account)
 
             txs = stmt.transactions
 
@@ -35,6 +39,8 @@ class OFXReaderBankStatement(IReaderBankStatement):
                     bs.inflows.append(cs)
                 else:
                     bs.outflows.append(cs)
+                
+                cs.origin = origin
 
             bankStmts.append(bs)
 
