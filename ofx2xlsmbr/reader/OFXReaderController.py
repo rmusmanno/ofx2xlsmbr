@@ -40,6 +40,13 @@ class OFXReaderController(IReaderController):
                     else:
                         options['creditcard'] = False
 
+                    options['bancodobrasil'] = False
+                    fi = root.findall("SIGNONMSGSRSV1")[0].findall("SONRS")[0].findall("FI")
+                    if (fi):
+                        org = fi[0].findall("ORG")
+                        if (org != None and "Banco do Brasil" in org[0].text):
+                            options['bancodobrasil'] = True
+
                     convertedTree = tree.convert()
                     bs = bsReader.read(factory, convertedTree, options)
                     bankStmts.append(bs)

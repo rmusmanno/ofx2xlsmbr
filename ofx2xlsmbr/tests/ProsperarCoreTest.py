@@ -16,6 +16,14 @@ def prosperarCoreTest():
             with open('./output.xlsx','wb') as out:
                 out.write(outputStream)
 
+def prosperarCoreTestBBCartao():
+    pc = ProsperarCore()
+
+    with open('./ofx2xlsmbr/ofx/BB Cartao Julho.ofx', 'rb') as inputFile:
+        outputStream = pc.run([inputFile])
+        with open('./output.xlsx','wb') as out:
+            out.write(outputStream)
+
 def prosperarCoreTestInputDuploOfx():
     pc = ProsperarCore()
 

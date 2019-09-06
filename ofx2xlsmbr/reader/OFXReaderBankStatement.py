@@ -14,7 +14,7 @@ class OFXReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx, options=None):
         signalMultiplier = 1
         if (options):
-            if (options['creditcard'] == True):
+            if (options['creditcard'] == True and options['bancodobrasil'] == False):
                 signalMultiplier = -1
 
         stmts = ofx.statements
