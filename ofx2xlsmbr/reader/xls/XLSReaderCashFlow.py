@@ -1,5 +1,8 @@
 from ..IReaderCashFlow import IReaderCashFlow
 from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
+from ofx2xlsmbr.model.Origin import Origin, AccountType
+
+from collections import namedtuple
 
 import logging
 
@@ -15,8 +18,18 @@ class XLSReaderCashFlow(IReaderCashFlow):
         for cellValue in row:
             cellValues.append(cellValue)
 
-        cs.date = cellValues[0]
-        cs.name = cellValues[1]
-        cs.value = cellValues[2]
+        Account = namedtuple('Account', 'acctid')
+        account = Account(acctid = cellValues[1])
+        origin = Origin(account)
+
+        if cellValues[0].upper() == 'C/C':
+            origin.account_type = AccountType.BANKACCOUNT
+        else:
+            origin.account_type = AccountType.CREDITCARD
+
+        cs.origin = origin
+        cs.date = cellValues[2]
+        cs.name = cellValues[3]
+        cs.value = cellValues[4]
 
         return cs
