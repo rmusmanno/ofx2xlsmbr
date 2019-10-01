@@ -6,6 +6,7 @@ from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
 from typing import List
 
 from .pdfParser import PDFParser
+from .PDFParserSantander import PDFParserSantander
 
 import logging
 
@@ -20,10 +21,17 @@ class PDFReaderController(IReaderController):
 
         if (files):
             for file in files:
-                parser = PDFParser()
-                result = parser.run(file)
+                try:
+                    parser = PDFParserSantander(file)
+                    result = parser.run()
+                except ValueError as err:
+                    logger.debug(err)
+                    parser = PDFParser()
+                    result = parser.run(file)
+
                 bs = bsReader.read(factory, result)
                 bankStmts.append(bs)
+
             return bankStmts
 
         bsNull = BankStatement()

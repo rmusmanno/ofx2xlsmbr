@@ -2,6 +2,10 @@ from .pdfReader import PDFReader
 
 import re
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class PDFParser():
     def parseMatch(self, match, emisDate):
         regex = '[-]?[\s]*[0-9]+,'
@@ -28,6 +32,9 @@ class PDFParser():
     def run(self, file):
         reader = PDFReader()
         pdfString = reader.run(file)
+
+        print('run string')
+        logger.info(pdfString)
 
         regex = '[0-9][0-9]\/[0-9][0-9][a-zA-Z\s$-.]+[0-9]+,[0-9][0-9]'
         matches = re.findall(regex, pdfString)
