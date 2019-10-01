@@ -48,4 +48,8 @@ venv.bak/
 # Visual Studio Code
 .vscode/
 
+# PyCharm
+.idea
+
 ofx/
+pdfs/
