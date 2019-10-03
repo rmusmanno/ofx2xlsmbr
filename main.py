@@ -1,6 +1,6 @@
 #from ofx2xlsmbr.tests.CSVWriterTest import csvWriterControllerTest
-from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
-#from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestCartaoBradescoDuplo, ofxReaderTestCartaoBradesco2, ofxReaderTestFile, ofxMultipleReaderTestFile
+#from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
+from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestCartaoBradescoDuplo, ofxReaderTestCartaoBradesco2, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile, xmlReaderTestFileCreditCard, ofxXmlReaderTestFile
 #from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsReaderTestFile2, xlsReaderTestFile3, xlsReaderTestFile_Origem, xlsMultipleReaderTestFile
 #from ofx2xlsmbr.tests.PDFReaderTest import pdfReaderTest
@@ -16,6 +16,7 @@ import unittest
 logger = logging.getLogger(__name__)
 
 # TODO: passar isso para uma unidade de testes. Manter a main enxuta
+# FIXME: Alguns testes nao funcionam por mudanca de logica de negocio
 def runTests():
     logger.info('running tests')
     #bankStatementAdderTest()
@@ -26,7 +27,7 @@ def runTests():
     #prosperarCoreTestOFXAndXLS()
     #prosperarCoreTestDuplicateEntry()
     #prosperarCoreTestReceiveBS()
-    #ofxReaderTest()
+    ofxReaderTest()
     #ofxReaderTestCartaoBradesco()
     #ofxReaderTestCartaoBradescoDuplo()
     #ofxReaderTestCartaoBradesco2()

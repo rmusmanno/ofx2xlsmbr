@@ -27,6 +27,12 @@ class OFXReaderController(IReaderController):
 
         if (files):
             for file in files:
+                content = file.read()
+                file.seek(0)
+                
+                upperContent = str(content).upper()
+                countOpen = upperContent.count('<STMTTRN>')
+            
                 try:
                     tree = OFXTree()
                     tree.parse(file)
@@ -57,8 +63,16 @@ class OFXReaderController(IReaderController):
                     xmlReader = xmlFactory.createReaderController()
                     bs = xmlReader.read(xmlFactory, files=[file])
                     bankStmts.append(bs)
-            return bankStmts
 
+                totalCount = 0
+                for bankStmtList in bankStmts:
+                    for bs in bankStmtList:
+                        totalCount += len(bs.inflows)
+                        totalCount += len(bs.outflows)
+                
+                assert countOpen == totalCount
+            return bankStmts
+            
         bsNull = BankStatement()
         return [bsNull]
 
