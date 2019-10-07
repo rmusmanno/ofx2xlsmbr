@@ -47,14 +47,3 @@ class CashFlow(object):
                                        self.date,
                                        self.cash_date,
                                        self.origin)
-
-
-class CSEncoder(JSONEncoder):
-    def default(self, o):
-        if isinstance(o, CashFlow):
-            return {'CashFlow': {
-                'Name': str(o.name),
-                'Value': str(o.value),
-                'Date': str(o.date),
-                'Origin': str(o.origin)
-            }}
