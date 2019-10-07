@@ -1,8 +1,10 @@
 from enum import Enum
 
+
 class AccountType(Enum):
     BANKACCOUNT = 0
     CREDITCARD = 1
+
 
 class Origin:
 
@@ -11,11 +13,11 @@ class Origin:
             raise ValueError('Account must be an object')
         self.account_id = account.acctid
         self.branch_id = None
-        
-        if hasattr(account,'bankid'):
+
+        if hasattr(account, 'bankid'):
             self.institution_number = account.bankid
             self.account_type = AccountType.BANKACCOUNT
-            if hasattr(account,'branchid'):
+            if hasattr(account, 'branchid'):
                 self.branch_id = account.branchid
         else:
             self.institution_number = None
@@ -28,9 +30,9 @@ class Origin:
         return "Account:{} / Type: {}".format(self.account_id, self.account_type)
 
     def __eq__(self, other):
-        return(
-            self.account_id == other.account_id and
-            self.institution_number == other.institution_number and
-            self.account_type == other.account_type and
-            self.branch_id == other.branch_id
+        return (
+                self.account_id == other.account_id and
+                self.institution_number == other.institution_number and
+                self.account_type == other.account_type and
+                self.branch_id == other.branch_id
         )
