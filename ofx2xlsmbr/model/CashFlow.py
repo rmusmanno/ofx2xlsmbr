@@ -1,20 +1,21 @@
 from enum import Enum
-
 from json import JSONEncoder
 
 from .Origin import Origin
+
 
 class CashFlowType(Enum):
     DEBIT = 1
     CREDIT = 2
 
+
 class CashFlow(object):
     def __init__(self,
-                name: str = 'N/A',
-                flowType: CashFlowType = CashFlowType.DEBIT,
-                value: float = 0.0,
-                date: str = 'N/A',
-                origin: Origin = None):
+                 name: str = 'N/A',
+                 flowType: CashFlowType = CashFlowType.DEBIT,
+                 value: float = 0.0,
+                 date: str = 'N/A',
+                 origin: Origin = None):
         self.name = name
         self.flowType = flowType
         self.value = value
@@ -23,11 +24,11 @@ class CashFlow(object):
 
     def __eq__(self, other):
         return (
-            self.__class__ == other.__class__ and
-            self.name.strip() == other.name.strip() and
-            self.value == other.value and
-            self.date == other.date and
-            self.origin == other.origin
+                self.__class__ == other.__class__ and
+                self.name.strip() == other.name.strip() and
+                self.value == other.value and
+                self.date == other.date and
+                self.origin == other.origin
         )
 
     def __repr__(self):
@@ -37,10 +38,11 @@ class CashFlow(object):
                 \n\tValue: {} \
                 \n\tDate: {} \
                 \n\tOrigin: {}'.format(self.name,
-                                    self.flowType.name, 
-                                    self.value,
-                                    self.date,
-                                    self.origin)
+                                       self.flowType.name,
+                                       self.value,
+                                       self.date,
+                                       self.origin)
+
 
 class CSEncoder(JSONEncoder):
     def default(self, o):
