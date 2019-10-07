@@ -9,7 +9,7 @@ class AccountType(Enum):
 class Origin:
 
     def __init__(self, account):
-        if account == None:
+        if account is None:
             raise ValueError('Account must be an object')
         self.account_id = account.acctid
         self.branch_id = None
