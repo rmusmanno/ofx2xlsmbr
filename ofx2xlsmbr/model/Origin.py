@@ -21,6 +21,9 @@ class Origin:
             self.institution_number = None
             self.account_type = AccountType.CREDITCARD
 
+    def is_bank_account(self):
+        return self.account_type and self.account_type == AccountType.BANKACCOUNT
+
     def __str__(self):
         return "Account:{} / Type: {}".format(self.account_id, self.account_type)
 

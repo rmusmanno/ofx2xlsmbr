@@ -42,6 +42,10 @@ class OFXReaderBankStatement(IReaderBankStatement):
                 
                 cs.origin = origin
 
+                if origin.is_bank_account():
+                    cs.cash_date = cs.date
+                # TODO: credit card
+
             bankStmts.append(bs)
 
         return bankStmts
