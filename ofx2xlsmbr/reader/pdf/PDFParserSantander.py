@@ -66,7 +66,7 @@ class PDFParserSantander:
             card['cash_flows'] = []
             for i in range(2, len(tokens), 4):
                 cash_flow = {
-                    'date': tokens[i],
+                    'date': datetime.strptime(tokens[i], '%d/%m/%Y'),
                     'description': tokens[i + 1],
                     'value_usd': tokens[i + 2].strip('US$ '),
                     'value_brl': tokens[i + 3].strip('R$ '),
