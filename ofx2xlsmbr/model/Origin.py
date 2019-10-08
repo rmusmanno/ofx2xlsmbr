@@ -8,20 +8,24 @@ class AccountType(Enum):
 
 class Origin:
 
-    def __init__(self, account):
+    def __init__(self, account=None, **kwargs):
         if account is None:
-            raise ValueError('Account must be an object')
-        self.account_id = account.acctid
-        self.branch_id = None
-
-        if hasattr(account, 'bankid'):
-            self.institution_number = account.bankid
-            self.account_type = AccountType.BANKACCOUNT
-            if hasattr(account, 'branchid'):
-                self.branch_id = account.branchid
+            self.account_id = kwargs.get('account')
+            self.branch_id = kwargs.get('branch')
+            self.institution_number = kwargs('institution')
+            self.account_type = AccountType[kwargs.get('type')]
         else:
-            self.institution_number = None
-            self.account_type = AccountType.CREDITCARD
+            self.account_id = account.acctid
+            self.branch_id = None
+
+            if hasattr(account, 'bankid'):
+                self.institution_number = account.bankid
+                self.account_type = AccountType.BANKACCOUNT
+                if hasattr(account, 'branchid'):
+                    self.branch_id = account.branchid
+            else:
+                self.institution_number = None
+                self.account_type = AccountType.CREDITCARD
 
     def is_bank_account(self):
         return self.account_type and self.account_type == AccountType.BANKACCOUNT
