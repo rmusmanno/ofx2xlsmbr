@@ -1,6 +1,6 @@
 #from ofx2xlsmbr.tests.CSVWriterTest import csvWriterControllerTest
 #from ofx2xlsmbr.tests.XLSWriterTest import xlsWriterControllerTest, xlsMultipleWriterControllerTest
-from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestCartaoBradescoDuplo, ofxReaderTestCartaoBradesco2, ofxReaderTestFile, ofxMultipleReaderTestFile
+#from ofx2xlsmbr.tests.OFXReaderTest import ofxReaderTest, ofxReaderTestCartaoBradesco, ofxReaderTestCartaoBradescoDuplo, ofxReaderTestCartaoBradesco2, ofxReaderTestFile, ofxMultipleReaderTestFile
 #from ofx2xlsmbr.tests.XMLReaderTest import xmlReaderTestFile, xmlReaderTestFileCreditCard, ofxXmlReaderTestFile
 #from ofx2xlsmbr.tests.XLSReaderTest import xlsReaderTestFile, xlsReaderTestFile2, xlsReaderTestFile3, xlsReaderTestFile_Origem, xlsMultipleReaderTestFile
 #from ofx2xlsmbr.tests.PDFReaderTest import pdfReaderTest
@@ -29,7 +29,7 @@ def runTests():
     #prosperarCoreTestReceiveBS()
     #ofxReaderTest()
     #ofxReaderTestCartaoBradesco()
-    ofxReaderTestCartaoBradescoDuplo()
+    #ofxReaderTestCartaoBradescoDuplo()
     #ofxReaderTestCartaoBradesco2()
     #ofxReaderTestFile()
     #ofxMultipleReaderTestFile()
