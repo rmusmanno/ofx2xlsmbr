@@ -39,6 +39,17 @@ class OFXReaderController(IReaderController):
                     options = {}
                     if (root.findall("CREDITCARDMSGSRSV1")):
                         options['creditcard'] = True
+
+                        # KN-177 - Check if Bradesco credit card
+                        ccstmttrnrs = root.findall('CREDITCARDMSGSRSV1')[0].findall('CCSTMTTRNRS')[0]
+                        banktranlist = ccstmttrnrs.findall('CCSTMTRS')[0].findall('BANKTRANLIST')[0]
+                        dtstart = banktranlist.findall('DTSTART')[0]
+                        dtend = banktranlist.findall('DTEND')[0]
+                        if dtstart.text == dtend.text:
+                            options['bradesco'] = True
+                            # Extract only date from timestamp
+                            cash_date = dtstart.text[0:8]
+                            options['cash_date'] = datetime.datetime.strptime(cash_date, '%Y%m%d')
                     else:
                         options['creditcard'] = False
 
