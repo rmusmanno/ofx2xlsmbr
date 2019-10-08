@@ -17,7 +17,8 @@ class PDFReaderCashFlow(IReaderCashFlow):
         cs.name = result[1]
         cs.value = result[2]
 
-        last_digits = result.get('last_digits')
-        cs.origin = Origin(type='CREDITCARD', account=last_digits)
+        if len(result) > 3:
+            last_digits = result[3]
+            cs.origin = Origin(type='CREDITCARD', account=last_digits)
 
         return cs
