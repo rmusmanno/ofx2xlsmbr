@@ -10,9 +10,9 @@ class Origin:
 
     def __init__(self, account=None, **kwargs):
         if account is None:
-            self.account_id = kwargs.get('account')
+            self.account_id = kwargs.get('account_id')
             self.branch_id = kwargs.get('branch')
-            self.institution_number = kwargs('institution')
+            self.institution_number = kwargs.get('institution')
             self.account_type = AccountType[kwargs.get('type')]
         else:
             self.account_id = account.acctid
