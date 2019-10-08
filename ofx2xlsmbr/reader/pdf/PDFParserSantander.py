@@ -68,12 +68,12 @@ class PDFParserSantander:
                     'value_brl': tokens[i + 3].strip('R$ '),
                 }
 
-                # TODO: add origin
                 # TODO: process expenses when currency is usd
                 self.results.append([
                     cash_flow['date'],
                     cash_flow['description'],
                     cash_flow['value_brl'],
+                    card['last_digits'],
                 ])
 
                 card['cash_flows'].append(cash_flow)
