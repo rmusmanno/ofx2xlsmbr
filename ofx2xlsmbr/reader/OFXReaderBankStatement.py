@@ -44,7 +44,7 @@ class OFXReaderBankStatement(IReaderBankStatement):
                 if origin.is_bank_account():
                     cs.cash_date = cs.date
                 if options['creditcard'] and options.get('bradesco'):
-                    cs.cash_date = options.get('cash_date')
+                    cs.cash_date = stmt.dtstart
                     # TODO: BB
                     # TODO: other banks
 

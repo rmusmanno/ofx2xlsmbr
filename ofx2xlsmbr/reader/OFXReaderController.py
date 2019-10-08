@@ -47,9 +47,6 @@ class OFXReaderController(IReaderController):
                         dtend = banktranlist.findall('DTEND')[0]
                         if dtstart.text == dtend.text:
                             options['bradesco'] = True
-                            # Extract only date from timestamp
-                            cash_date = dtstart.text[0:8]
-                            options['cash_date'] = datetime.datetime.strptime(cash_date, '%Y%m%d')
                     else:
                         options['creditcard'] = False
 
