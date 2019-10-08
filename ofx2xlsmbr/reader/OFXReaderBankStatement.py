@@ -8,6 +8,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class OFXReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx, options=None):
         signalMultiplier = 1
@@ -20,7 +21,7 @@ class OFXReaderBankStatement(IReaderBankStatement):
         csReader = factory.createReaderCashFlow()
 
         bankStmts = []
-        
+
         # btmts -> bs
         for stmt in stmts:
             bs = BankStatement()
@@ -37,7 +38,7 @@ class OFXReaderBankStatement(IReaderBankStatement):
                     bs.inflows.append(cs)
                 else:
                     bs.outflows.append(cs)
-                
+
                 cs.origin = origin
 
                 if origin.is_bank_account():
