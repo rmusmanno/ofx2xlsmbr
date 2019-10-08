@@ -21,4 +21,9 @@ class PDFReaderCashFlow(IReaderCashFlow):
             last_digits = result[3]
             cs.origin = Origin(type='CREDITCARD', account_id=last_digits)
 
+        if len(result) > 4:
+            cash_date = result[4]
+            if cash_date is not None:
+                cs.cash_date = cash_date
+
         return cs
