@@ -1,22 +1,18 @@
 from .IReaderController import IReaderController
 
 from ofx2xlsmbr.model.BankStatement import BankStatement
-from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
 
 from ofx2xlsmbr.factory.XMLReaderFactory import XMLReaderFactory
 
 from typing import List
 import datetime
 from pytz import timezone
-import pytz
 
 import logging
 
 logger = logging.getLogger(__name__)
 
-import ofxtools
 from ofxtools import OFXTree
-from ofxtools.Types import OFXSpecError
 
 class OFXReaderController(IReaderController):
     def read(self, factory, files=[]) -> List[BankStatement]:
