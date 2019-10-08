@@ -1,5 +1,3 @@
-from enum import Enum
-
 from .IReaderBankStatement import IReaderBankStatement
 from ofx2xlsmbr.model.BankStatement import BankStatement
 from ofx2xlsmbr.model.Origin import Origin
