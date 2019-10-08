@@ -1,22 +1,18 @@
 from .IReaderController import IReaderController
 
 from ofx2xlsmbr.model.BankStatement import BankStatement
-from ofx2xlsmbr.model.CashFlow import CashFlow, CashFlowType
 
 from ofx2xlsmbr.factory.XMLReaderFactory import XMLReaderFactory
 
 from typing import List
 import datetime
 from pytz import timezone
-import pytz
 
 import logging
 
 logger = logging.getLogger(__name__)
 
-import ofxtools
 from ofxtools import OFXTree
-from ofxtools.Types import OFXSpecError
 
 class OFXReaderController(IReaderController):
     def read(self, factory, files=[]) -> List[BankStatement]:
@@ -27,6 +23,12 @@ class OFXReaderController(IReaderController):
 
         if (files):
             for file in files:
+                content = file.read()
+                file.seek(0)
+                
+                upperContent = str(content).upper()
+                countOpen = upperContent.count('<STMTTRN>')
+            
                 try:
                     tree = OFXTree()
                     tree.parse(file)
@@ -37,6 +39,14 @@ class OFXReaderController(IReaderController):
                     options = {}
                     if (root.findall("CREDITCARDMSGSRSV1")):
                         options['creditcard'] = True
+
+                        # KN-177 - Check if Bradesco credit card
+                        ccstmttrnrs = root.findall('CREDITCARDMSGSRSV1')[0].findall('CCSTMTTRNRS')[0]
+                        banktranlist = ccstmttrnrs.findall('CCSTMTRS')[0].findall('BANKTRANLIST')[0]
+                        dtstart = banktranlist.findall('DTSTART')[0]
+                        dtend = banktranlist.findall('DTEND')[0]
+                        if dtstart.text == dtend.text:
+                            options['bradesco'] = True
                     else:
                         options['creditcard'] = False
 
@@ -57,8 +67,16 @@ class OFXReaderController(IReaderController):
                     xmlReader = xmlFactory.createReaderController()
                     bs = xmlReader.read(xmlFactory, files=[file])
                     bankStmts.append(bs)
-            return bankStmts
 
+                totalCount = 0
+                for bankStmtList in bankStmts:
+                    for bs in bankStmtList:
+                        totalCount += len(bs.inflows)
+                        totalCount += len(bs.outflows)
+                
+                assert countOpen == totalCount
+            return bankStmts
+            
         bsNull = BankStatement()
         return [bsNull]
 

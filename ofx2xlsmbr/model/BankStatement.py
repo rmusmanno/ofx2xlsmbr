@@ -1,5 +1,5 @@
 from typing import List
-from .CashFlow import CashFlow, CSEncoder
+from .CashFlow import CashFlow
 
 
 class BankStatement(object):
