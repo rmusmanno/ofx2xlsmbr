@@ -30,8 +30,7 @@ class XMLReaderController(IReaderController):
                 options['creditcard'] = False
         
         bsReader = factory.createReaderBankStatement()
-        bs = bsReader.read(factory, tree, options)
-        return bs
+        return [bsReader.read(factory, tree, options)]
 
     def readFile(self, file):
         data = str(file.read())
