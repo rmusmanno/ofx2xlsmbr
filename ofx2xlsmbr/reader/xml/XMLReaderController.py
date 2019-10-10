@@ -3,7 +3,6 @@ from ofx2xlsmbr.reader.IReaderController import IReaderController
 from ofx2xlsmbr.model.BankStatement import BankStatement
 
 from typing import List
-import xml.etree.ElementTree as ET
 from lxml import etree
 
 import logging
@@ -30,8 +29,7 @@ class XMLReaderController(IReaderController):
                 options['creditcard'] = False
         
         bsReader = factory.createReaderBankStatement()
-        bs = bsReader.read(factory, tree, options)
-        return bs
+        return [bsReader.read(factory, tree, options)]
 
     def readFile(self, file):
         data = str(file.read())
