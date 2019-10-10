@@ -3,7 +3,6 @@ from ofx2xlsmbr.reader.IReaderController import IReaderController
 from ofx2xlsmbr.model.BankStatement import BankStatement
 
 from typing import List
-import xml.etree.ElementTree as ET
 from lxml import etree
 
 import logging
