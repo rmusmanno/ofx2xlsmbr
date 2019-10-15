@@ -9,7 +9,7 @@ def pdfReaderTest():
     factory = PDFReaderFactory()
     controller = factory.createReaderController()
     
-    with open('./ofx2xlsmbr/ofx/cartao itau.pdf', 'rb') as inputFile:
+    with open('./ofx2xlsmbr/pdfs/santander/internet/7910_2019-06.pdf', 'rb') as inputFile:
         bs = controller.read(factory, files=[inputFile])
         logger.info(str(bs))
 
