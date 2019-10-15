@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from .pdfReader import PDFReader
 
 
@@ -43,8 +45,10 @@ class PDFParserSantander:
         cash_flows_delimiter = 'Resumo das despesas'
         if cash_flows_delimiter in self._text:
             tables_and_footers, _ = self._text.split(cash_flows_delimiter)
+            cash_date = self.__find_cash_date()
         else:
             tables_and_footers = self._text
+            cash_date = None
 
         header_delimiter = 'Data\nDescrição\nValor (US$)\nValor (R$)'
         tables_and_footers_list = tables_and_footers.split(header_delimiter)
@@ -62,20 +66,28 @@ class PDFParserSantander:
             card['cash_flows'] = []
             for i in range(2, len(tokens), 4):
                 cash_flow = {
-                    'date': tokens[i],
+                    'date': datetime.strptime(tokens[i], '%d/%m/%Y'),
                     'description': tokens[i + 1],
                     'value_usd': tokens[i + 2].strip('US$ '),
                     'value_brl': tokens[i + 3].strip('R$ '),
                 }
 
-                # TODO: add origin
                 # TODO: process expenses when currency is usd
                 self.results.append([
                     cash_flow['date'],
                     cash_flow['description'],
                     cash_flow['value_brl'],
+                    card['last_digits'],
+                    cash_date,
                 ])
 
                 card['cash_flows'].append(cash_flow)
 
             self.cards.append(card)
+
+    def __find_cash_date(self):
+        delimiter = 'Data de vencimento:\n'
+        pos = self._text.find(delimiter) + len(delimiter)
+        # format dd/mm/YYYY (len=10)
+        date_str = self._text[pos:pos+10]
+        return datetime.strptime(date_str, '%d/%m/%Y')
