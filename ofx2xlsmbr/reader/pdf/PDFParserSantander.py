@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 
 from .pdfReader import PDFReader
 
@@ -22,6 +23,8 @@ class PDFParserSantander:
 
         if pdf_type == 'internet':
             self._run_internet_banking()
+        if pdf_type == 'unique':
+            self._run_unique()
         elif pdf_type == 'unknown':
             raise ValueError(f'Parser does not know how to handle this file: {self.file}')
         else:
@@ -37,6 +40,8 @@ class PDFParserSantander:
                 )
             if self._text.startswith('Internet Banking'):
                 self._type = 'internet'
+            if self._text.find('SANTANDER UNIQUE') != -1:
+                self._type = 'unique'
             else:
                 self._type = 'unknown'
         return self._type
@@ -85,9 +90,66 @@ class PDFParserSantander:
 
             self.cards.append(card)
 
+    def _run_unique(self):
+        cash_date = self.__find_cash_date()
+
+        # Remove irrelevant information
+        pages = self._text.split('SANTANDER UNIQUE')
+        first_page_footer_removed = pages[1].split('IOF e CET')[0]
+        expense_history = ''.join([first_page_footer_removed, pages[2]])
+
+        pos = expense_history.find('Nº DO CARTÃO ')
+        # format: Nº DO CARTÃO 1234 XXXX XXXX 4321
+        origin = expense_history[pos+13:pos+32]
+
+        expense_history = expense_history.split('Histórico das Despesas')[1]
+        expense_history = expense_history.split('DataDescrição')[0]
+
+        tokens = expense_history.split()
+        for i in range(len(tokens)):
+            cash_flow = {}
+            token = tokens[i]
+
+            if i == 0:
+                date_str = f"{token}/{cash_date.year}"
+                cash_flow['date'] = datetime.strptime(date_str, '%d/%m/%Y')
+                next_token = tokens[i + 3]
+                cash_flow['description'] = next_token
+                next_token = tokens[i + 5]
+                if next_token.startswith('PARC'):
+                    cash_flow['description'] = f"{cash_flow.get('description')} {next_token}"
+                    next_token = tokens[i + 6]
+                cash_flow['value'] = next_token
+
+            elif re.match(r"\d{2}/\d{2}", token[0:5]):
+                date_str = f"{token[:5]}/{cash_date.year}"
+                cash_flow['date'] = datetime.strptime(date_str, '%d/%m/%Y')
+                cash_flow['description'] = token[5:]
+                next_token = tokens[i + 1]
+                if next_token.startswith('PARC'):
+                    cash_flow['description'] = f"{cash_flow.get('description')} {next_token}"
+                    next_token = tokens[i + 2]
+                cash_flow['value'] = next_token
+
+            else:
+                continue
+
+            self.results.append([
+                cash_flow['date'],
+                cash_flow['description'],
+                cash_flow['value'],
+                origin,
+                cash_date,
+            ])
+
     def __find_cash_date(self):
-        delimiter = 'Data de vencimento:\n'
-        pos = self._text.find(delimiter) + len(delimiter)
+        if self._type == 'internet':
+            delimiter = 'Data de vencimento:\n'
+            pos = self._text.find(delimiter) + len(delimiter)
+        elif self._type == 'unique':
+            delimiter = '!Vencimento\n'
+            pos = self._text.find(delimiter) + len(delimiter)
+
         # format dd/mm/YYYY (len=10)
-        date_str = self._text[pos:pos+10]
+        date_str = self._text[pos:pos + 10]
         return datetime.strptime(date_str, '%d/%m/%Y')
