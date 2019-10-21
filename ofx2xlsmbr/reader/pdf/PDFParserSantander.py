@@ -13,6 +13,10 @@ class PDFParserSantander:
         self._text = None
         self._type = None
 
+    @staticmethod
+    def __replace_separator(value_str_brl):
+        return value_str_brl.replace(',', '.')
+
     def run(self):
         self.results.clear()
 
@@ -73,8 +77,8 @@ class PDFParserSantander:
                 cash_flow = {
                     'date': datetime.strptime(tokens[i], '%d/%m/%Y'),
                     'description': tokens[i + 1],
-                    'value_usd': tokens[i + 2].strip('US$ '),
-                    'value_brl': tokens[i + 3].strip('R$ '),
+                    'value_usd': self.__replace_separator(tokens[i + 2].strip('US$ ')),
+                    'value_brl': self.__replace_separator(tokens[i + 3].strip('R$ ')),
                 }
 
                 # TODO: process expenses when currency is usd
@@ -119,7 +123,7 @@ class PDFParserSantander:
                 if next_token.startswith('PARC'):
                     cash_flow['description'] = f"{cash_flow.get('description')} {next_token}"
                     next_token = tokens[i + 6]
-                cash_flow['value'] = next_token
+                cash_flow['value'] = self.__replace_separator(next_token)
 
             elif re.match(r"\d{2}/\d{2}", token[0:5]):
                 date_str = f"{token[:5]}/{cash_date.year}"
@@ -129,7 +133,7 @@ class PDFParserSantander:
                 if next_token.startswith('PARC'):
                     cash_flow['description'] = f"{cash_flow.get('description')} {next_token}"
                     next_token = tokens[i + 2]
-                cash_flow['value'] = next_token
+                cash_flow['value'] = self.__replace_separator(next_token)
 
             else:
                 continue
