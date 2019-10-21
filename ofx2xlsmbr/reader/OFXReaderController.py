@@ -20,6 +20,7 @@ class OFXReaderController(IReaderController):
 
         bankStmts = []
         bsReader = factory.createReaderBankStatement()
+        countOpen = 0
 
         if (files):
             for file in files:
@@ -27,8 +28,8 @@ class OFXReaderController(IReaderController):
                 file.seek(0)
                 
                 upperContent = str(content).upper()
-                countOpen = upperContent.count('<STMTTRN>')
-            
+                countOpen += upperContent.count('<STMTTRN>')
+
                 try:
                     tree = OFXTree()
                     tree.parse(file)
