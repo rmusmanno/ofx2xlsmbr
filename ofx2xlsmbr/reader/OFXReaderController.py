@@ -69,13 +69,13 @@ class OFXReaderController(IReaderController):
                     bs = xmlReader.read(xmlFactory, files=[file])
                     bankStmts.append(bs)
 
-            totalCount = 0
+            total_count = 0
             for bankStmtList in bankStmts:
                 for bs in bankStmtList:
-                    totalCount += len(bs.inflows)
-                    totalCount += len(bs.outflows)
+                    total_count += len(bs.inflows)
+                    total_count += len(bs.outflows)
 
-            assert count_open == totalCount
+            assert count_open == total_count
 
             return bankStmts
             
