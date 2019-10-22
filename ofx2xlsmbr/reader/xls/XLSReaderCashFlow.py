@@ -29,7 +29,8 @@ class XLSReaderCashFlow(IReaderCashFlow):
 
         cs.origin = origin
         cs.date = cellValues[2]
-        cs.name = cellValues[3]
-        cs.value = cellValues[4]
+        cs.cash_date = cellValues[3]
+        cs.name = cellValues[4]
+        cs.value = cellValues[5]
 
         return cs

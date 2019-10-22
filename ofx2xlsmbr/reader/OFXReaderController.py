@@ -20,6 +20,7 @@ class OFXReaderController(IReaderController):
 
         bankStmts = []
         bsReader = factory.createReaderBankStatement()
+        count_open = 0
 
         if (files):
             for file in files:
@@ -27,8 +28,8 @@ class OFXReaderController(IReaderController):
                 file.seek(0)
                 
                 upperContent = str(content).upper()
-                countOpen = upperContent.count('<STMTTRN>')
-            
+                count_open += upperContent.count('<STMTTRN>')
+
                 try:
                     tree = OFXTree()
                     tree.parse(file)
@@ -68,13 +69,14 @@ class OFXReaderController(IReaderController):
                     bs = xmlReader.read(xmlFactory, files=[file])
                     bankStmts.append(bs)
 
-                totalCount = 0
-                for bankStmtList in bankStmts:
-                    for bs in bankStmtList:
-                        totalCount += len(bs.inflows)
-                        totalCount += len(bs.outflows)
-                
-                assert countOpen == totalCount
+            total_count = 0
+            for bankStmtList in bankStmts:
+                for bs in bankStmtList:
+                    total_count += len(bs.inflows)
+                    total_count += len(bs.outflows)
+
+            assert count_open == total_count
+
             return bankStmts
             
         bsNull = BankStatement()
@@ -108,5 +110,3 @@ class OFXReaderController(IReaderController):
                     pass
         except IndexError:
             pass
-
-            
