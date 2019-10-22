@@ -2,7 +2,6 @@ from ofx2xlsmbr.reader.IReaderBankStatement import IReaderBankStatement
 from ofx2xlsmbr.model.BankStatement import BankStatement
 from ofx2xlsmbr.model.Origin import Origin
 
-import xml.etree.ElementTree as ET
 
 class XMLReaderBankStatement(IReaderBankStatement):
     def read(self, factory, ofx, options=None) -> BankStatement:
