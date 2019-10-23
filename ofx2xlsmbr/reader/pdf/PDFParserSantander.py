@@ -107,15 +107,12 @@ class PDFParserSantander:
 
     def _run_unique(self):
         cash_date = self.__find_cash_date()
+        origin = self.__find_card_number()
 
         # Remove irrelevant information
         pages = self._text.split('SANTANDER UNIQUE')
         first_page_footer_removed = pages[1].split('IOF e CET')[0]
         expense_history = ''.join([first_page_footer_removed, pages[2]])
-
-        pos = expense_history.find('Nº DO CARTÃO ')
-        # format: Nº DO CARTÃO 1234 XXXX XXXX 4321
-        origin = expense_history[pos+13:pos+32]
 
         expense_history = expense_history.split('Histórico das Despesas')[1]
         expense_history = expense_history.split('DataDescrição')[0]
@@ -156,6 +153,11 @@ class PDFParserSantander:
                 origin,
                 cash_date,
             ])
+
+    def __find_card_number(self):
+        pos = self._text.find('Nº DO CARTÃO ')
+        # format: Nº DO CARTÃO 1234 XXXX XXXX 4321
+        return self._text[pos + 13:pos + 32]
 
     def __find_cash_date(self):
         if self._type == 'internet':
