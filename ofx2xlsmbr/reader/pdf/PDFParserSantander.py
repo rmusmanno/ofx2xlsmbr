@@ -109,9 +109,9 @@ class PDFParserSantander:
         pages = self._text.split('Nº DO CARTÃO ')
 
         if self._type == 'unique':
-            expense_pages = pages[1:]
-        elif self._type == 'standard':
             expense_pages = pages[2:]
+        elif self._type == 'standard':
+            expense_pages = pages[3:]
 
         expense_pages[0] = expense_pages[0].split('IOF e CET')[0]
 
