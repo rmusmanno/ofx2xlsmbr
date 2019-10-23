@@ -161,7 +161,7 @@ class PDFParserSantander:
         if self._type == 'internet':
             delimiter = 'Data de vencimento:\n'
             pos = self._text.find(delimiter) + len(delimiter)
-        elif self._type == 'unique':
+        elif self._type in ['unique', 'standard']:
             delimiter = '!Vencimento\n'
             pos = self._text.find(delimiter) + len(delimiter)
 
