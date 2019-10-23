@@ -106,15 +106,16 @@ class PDFParserSantander:
         cash_date = self.__find_cash_date()
         origin = self.__find_card_number()
 
-        # Remove irrelevant information
         pages = self._text.split('Nº DO CARTÃO ')
-        if self._type == 'standard':
-            # This PDF type has an extra page
-            pages = pages[1:]
 
-        first_page_footer_removed = pages[1].split('IOF e CET')[0]
-        expense_history = ''.join([first_page_footer_removed, pages[2]])
+        if self._type == 'unique':
+            expense_pages = pages[1:]
+        elif self._type == 'standard':
+            expense_pages = pages[2:]
 
+        expense_pages[0] = expense_pages[0].split('IOF e CET')[0]
+
+        expense_history = ''.join(expense_pages)
         expense_history = expense_history.split('Histórico das Despesas')[1]
         expense_history = expense_history.split('DataDescrição')[0]
 
