@@ -110,7 +110,7 @@ class PDFParserSantander:
         origin = self.__find_card_number()
 
         # Remove irrelevant information
-        pages = self._text.split('SANTANDER UNIQUE')
+        pages = self._text.split('Nº DO CARTÃO ')
         first_page_footer_removed = pages[1].split('IOF e CET')[0]
         expense_history = ''.join([first_page_footer_removed, pages[2]])
 
