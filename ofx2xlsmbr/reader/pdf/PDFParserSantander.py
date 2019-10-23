@@ -44,7 +44,7 @@ class PDFParserSantander:
                 )
             if self._text.startswith('Internet Banking'):
                 self._type = 'internet'
-            if self._text.find('SANTANDER UNIQUE') != -1:
+            elif self._text.find('SANTANDER UNIQUE') != -1:
                 self._type = 'unique'
             else:
                 self._type = 'unknown'
