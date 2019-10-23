@@ -27,11 +27,8 @@ class PDFParserSantander:
 
         if pdf_type == 'internet':
             self._run_internet_banking()
-        if pdf_type == 'standard':
-            # TODO: process standard type
-            pass
-        if pdf_type == 'unique':
-            self._run_unique()
+        if pdf_type in ['standard', 'unique']:
+            self._run()
         elif pdf_type == 'unknown':
             raise ValueError(f'Parser does not know how to handle this file: {self.file}')
         else:
@@ -105,12 +102,16 @@ class PDFParserSantander:
 
             self.cards.append(card)
 
-    def _run_unique(self):
+    def _run(self):
         cash_date = self.__find_cash_date()
         origin = self.__find_card_number()
 
         # Remove irrelevant information
         pages = self._text.split('Nº DO CARTÃO ')
+        if self._type == 'standard':
+            # This PDF type has an extra page
+            pages = pages[1:]
+
         first_page_footer_removed = pages[1].split('IOF e CET')[0]
         expense_history = ''.join([first_page_footer_removed, pages[2]])
 
