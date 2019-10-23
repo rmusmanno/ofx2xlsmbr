@@ -27,6 +27,9 @@ class PDFParserSantander:
 
         if pdf_type == 'internet':
             self._run_internet_banking()
+        if pdf_type == 'standard':
+            # TODO: process standard type
+            pass
         if pdf_type == 'unique':
             self._run_unique()
         elif pdf_type == 'unknown':
@@ -44,6 +47,14 @@ class PDFParserSantander:
                 )
             if self._text.startswith('Internet Banking'):
                 self._type = 'internet'
+            elif any(
+                    card_type in self._text for card_type in [
+                        'SANTANDER NACIONAL',
+                        'SANTANDER STYLE PLATINUM',
+                        'SANTANDER FREE',
+                    ]
+            ):
+                self._type = 'standard'
             elif self._text.find('SANTANDER UNIQUE') != -1:
                 self._type = 'unique'
             else:
