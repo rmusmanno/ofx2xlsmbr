@@ -11,15 +11,16 @@ class PDFReaderBankStatement(IReaderBankStatement):
         bs = BankStatement()
 
         result = ofx
-        
+
         csReader = factory.createReaderCashFlow()
         headerRow = True
         for row in result:
             # Pulando o cabecalho
-            if (headerRow):
+            has_header = options.get('has_header', True)
+            if headerRow and has_header:
                 headerRow = False
                 continue
-            
+
             cs = csReader.read(factory, row)
             if ('-' not in cs.value):
                 bs.inflows.append(cs)
