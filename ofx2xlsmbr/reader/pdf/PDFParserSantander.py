@@ -118,26 +118,21 @@ class PDFParserSantander:
         expense_pages[0] = expense_pages[0].split('IOF e CET')[0]
 
         expense_history = ''.join(expense_pages)
-        expense_history = expense_history.split('Histórico das Despesas')[1]
-        expense_history = expense_history.split('DataDescrição')[0]
-
         tokens = expense_history.split()
-        for i in range(len(tokens)):
-            cash_flow = {}
-            token = tokens[i]
+        start = False
+        card_tokens = []
+        for token in tokens:
+            if token in ['Histórico', 'TransaçõesNacionais', 'TransaçõesInternacionais']:
+                start = True
+            elif token in ['DataDescrição', '(+)Despesas/DébitosnoBrasil']:
+                start = False
+            elif start is True:
+                card_tokens.append(token)
 
-            if i == 0:
-                date_str = f"{token}/{cash_date.year}"
-                cash_flow['date'] = datetime.strptime(date_str, '%d/%m/%Y')
-                next_token = tokens[i + 3]
-                cash_flow['description'] = next_token
-                next_token = tokens[i + 5]
-                if next_token.startswith('PARC'):
-                    cash_flow['description'] = f"{cash_flow.get('description')} {next_token}"
-                    next_token = tokens[i + 6]
-                cash_flow['value'] = self.__replace_separator(next_token)
-
-            elif re.match(r"\d{2}/\d{2}", token[0:5]):
+        for i in range(len(card_tokens)):
+            token = card_tokens[i]
+            if re.match(r"\d{2}/\d{2}", token[:5]):
+                cash_flow = {}
                 date_str = f"{token[:5]}/{cash_date.year}"
                 cash_flow['date'] = datetime.strptime(date_str, '%d/%m/%Y')
                 cash_flow['description'] = token[5:]
@@ -147,16 +142,13 @@ class PDFParserSantander:
                     next_token = tokens[i + 2]
                 cash_flow['value'] = self.__replace_separator(next_token)
 
-            else:
-                continue
-
-            self.results.append([
-                cash_flow['date'],
-                cash_flow['description'],
-                cash_flow['value'],
-                origin,
-                cash_date,
-            ])
+                self.results.append([
+                    cash_flow['date'],
+                    cash_flow['description'],
+                    cash_flow['value'],
+                    origin,
+                    cash_date,
+                ])
 
     def __find_card_number(self):
         pos = self._text.find('Nº DO CARTÃO ')
