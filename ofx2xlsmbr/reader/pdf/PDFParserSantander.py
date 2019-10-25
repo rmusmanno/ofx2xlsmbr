@@ -137,10 +137,10 @@ class PDFParserSantander:
 
                 description = token[5:]
 
-                next_token = tokens[i + 1]
+                next_token = card_tokens[i + 1]
                 if next_token.startswith('PARC'):
                     description = f"{description} {next_token}"
-                    next_token = tokens[i + 2]
+                    next_token = card_tokens[i + 2]
 
                 value = self.__replace_separator(next_token)
 
