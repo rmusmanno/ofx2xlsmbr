@@ -27,7 +27,7 @@ class PDFParserSantander:
 
         if pdf_type == 'internet':
             self._run_internet_banking()
-        if pdf_type in ['standard', 'unique']:
+        elif pdf_type in ['standard', 'unique']:
             self._run()
         elif pdf_type == 'unknown':
             raise ValueError(f'Parser does not know how to handle this file: {self.file}')
