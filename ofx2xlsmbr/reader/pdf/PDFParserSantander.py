@@ -132,23 +132,19 @@ class PDFParserSantander:
         for i in range(len(card_tokens)):
             token = card_tokens[i]
             if re.match(r"\d{2}/\d{2}", token[:5]):
-                cash_flow = {}
                 date_str = f"{token[:5]}/{cash_date.year}"
-                cash_flow['date'] = datetime.strptime(date_str, '%d/%m/%Y')
-                cash_flow['description'] = token[5:]
+                date = datetime.strptime(date_str, '%d/%m/%Y')
+
+                description = token[5:]
+
                 next_token = tokens[i + 1]
                 if next_token.startswith('PARC'):
-                    cash_flow['description'] = f"{cash_flow.get('description')} {next_token}"
+                    description = f"{description} {next_token}"
                     next_token = tokens[i + 2]
-                cash_flow['value'] = self.__replace_separator(next_token)
 
-                self.results.append([
-                    cash_flow['date'],
-                    cash_flow['description'],
-                    cash_flow['value'],
-                    origin,
-                    cash_date,
-                ])
+                value = self.__replace_separator(next_token)
+
+                self.results.append([date, description, value, origin, cash_date])
 
     def __find_card_number(self):
         pos = self._text.find('Nº DO CARTÃO ')
