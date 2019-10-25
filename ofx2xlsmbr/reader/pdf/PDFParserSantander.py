@@ -112,6 +112,8 @@ class PDFParserSantander:
             expense_pages = pages[2:]
         elif self._type == 'standard':
             expense_pages = pages[3:]
+        else:
+            raise ValueError(f'Could not run type={self._type}')
 
         expense_pages[0] = expense_pages[0].split('IOF e CET')[0]
 
@@ -168,6 +170,8 @@ class PDFParserSantander:
         elif self._type in ['unique', 'standard']:
             delimiter = '!Vencimento\n'
             pos = self._text.find(delimiter) + len(delimiter)
+        else:
+            raise ValueError('Could not find cash date.')
 
         # format dd/mm/YYYY (len=10)
         date_str = self._text[pos:pos + 10]
