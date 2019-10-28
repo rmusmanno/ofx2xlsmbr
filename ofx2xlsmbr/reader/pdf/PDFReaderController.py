@@ -21,15 +21,17 @@ class PDFReaderController(IReaderController):
 
         if (files):
             for file in files:
+                options = {}
                 try:
                     parser = PDFParserSantander(file)
                     result = parser.run()
+                    options['has_header'] = False
                 except ValueError as err:
                     logger.debug(err)
                     parser = PDFParser()
                     result = parser.run(file)
 
-                bs = bsReader.read(factory, result)
+                bs = bsReader.read(factory, result, options=options)
                 bankStmts.append(bs)
 
             return bankStmts
